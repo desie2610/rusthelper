@@ -1,6 +1,10 @@
+import { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 import { resourceMeta } from '../data/raidData';
+import { RaidSimulator } from './RaidSimulator';
+
+const STORAGE_KEY = 'rusthelper-best-raid-plans';
 
 const CardWrap = styled(motion.article)`
   width: min(100%, 860px);
@@ -139,6 +143,28 @@ const BestText = styled.p`
   margin: 8px 0 0;
   color: #d7c6b2;
   line-height: 1.5;
+`;
+
+const SimulatorToggle = styled(motion.button)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px 18px 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #16110d;
+  background: #f1c47d;
+  box-shadow: 0 14px 28px rgba(214, 161, 90, 0.24);
+  cursor: pointer;
+  font-weight: 900;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+
+  &:hover {
+    background: #ffd48d;
+    transform: translateY(-2px);
+  }
 `;
 
 const ResourceItem = styled(motion.div)`
@@ -285,12 +311,6 @@ function getSulfurResources(resources) {
     }));
 }
 
-function getCombinationTitle(combo) {
-  return combo.parts
-    .map((part) => `${resourceMeta[part.key].label}: ${part.amount} шт.`)
-    .join(' + ');
-}
-
 function getBestSulfurCombination(target) {
   const resources = getSulfurResources(target.resources);
   let bestCombo = null;
@@ -351,10 +371,10 @@ function getCheapestResource(target) {
 
     return {
       parts: [{ key: 'molotov', amount: molotov.amount }],
-      price: getResourcePrice('molotov', molotov),
-      priceLabel: resourceMeta.molotov.priceLabel,
-      title: `${resourceMeta.molotov.label}: ${molotov.amount} шт.`,
+      sulfur: 0,
+      tnk: getResourcePrice('molotov', molotov),
       description: 'Для деревянных объектов молотовы считаются самым выгодным вариантом.',
+      source: 'default',
     };
   }
 
@@ -362,18 +382,117 @@ function getCheapestResource(target) {
 
   return {
     parts: bestCombo.parts,
-    price: bestCombo.sulfur,
-    priceLabel: 'Цена в сере',
-    title: getCombinationTitle(bestCombo),
+    sulfur: bestCombo.sulfur,
+    tnk: 0,
     description:
       bestCombo.parts.length > 1
         ? 'Подобрана самая дешевая комбинация по сере.'
         : 'Выбрано по минимальной цене в сере.',
+    source: 'default',
+  };
+}
+
+function getStoredPlans() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? {};
+  } catch {
+    return {};
+  }
+}
+
+function saveStoredPlans(plans) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(plans));
+}
+
+function getPlanTitle(plan) {
+  return plan.parts
+    .map((part) => `${resourceMeta[part.key].label}: ${part.amount} шт.`)
+    .join(' + ');
+}
+
+function getPlanCostLabel(plan) {
+  const costs = [];
+
+  if (plan.sulfur > 0) {
+    costs.push(`сера: ${plan.sulfur.toLocaleString('ru-RU')}`);
+  }
+
+  if (plan.tnk > 0) {
+    costs.push(`ТНК: ${plan.tnk.toLocaleString('ru-RU')}`);
+  }
+
+  return costs.join(' + ');
+}
+
+function isPlanCheaper(candidate, current) {
+  if (!current) {
+    return true;
+  }
+
+  if (candidate.sulfur !== current.sulfur) {
+    return candidate.sulfur < current.sulfur;
+  }
+
+  if (candidate.tnk !== current.tnk) {
+    return candidate.tnk < current.tnk;
+  }
+
+  const candidateItems = candidate.parts.reduce((sum, part) => sum + part.amount, 0);
+  const currentItems = current.parts.reduce((sum, part) => sum + part.amount, 0);
+
+  return candidateItems < currentItems;
+}
+
+function normalizeSimulationPlan(target, plan) {
+  return {
+    ...plan,
+    title: getPlanTitle(plan),
+    description:
+      plan.parts.length > 1
+        ? 'Сохранено из симуляции: игрок нашёл дешевый микс.'
+        : 'Сохранено из симуляции как самый дешевый вариант.',
+    source: 'simulation',
+    targetId: target.id,
   };
 }
 
 export function RaidCard({ target }) {
-  const cheapestResource = target ? getCheapestResource(target) : null;
+  const [isSimulatorOpen, setIsSimulatorOpen] = useState(false);
+  const [savedPlans, setSavedPlans] = useState(getStoredPlans);
+  const defaultPlan = useMemo(() => (target ? getCheapestResource(target) : null), [target]);
+  const savedPlan = target ? savedPlans[target.id] : null;
+  const cheapestResource = savedPlan ?? defaultPlan;
+
+  useEffect(() => {
+    if (!target || savedPlans[target.id] || !defaultPlan) {
+      return;
+    }
+
+    const nextPlans = {
+      ...savedPlans,
+      [target.id]: defaultPlan,
+    };
+
+    saveStoredPlans(nextPlans);
+  }, [defaultPlan, savedPlans, target]);
+
+  function handleRaidComplete(plan) {
+    const normalizedPlan = normalizeSimulationPlan(target, plan);
+
+    if (!isPlanCheaper(normalizedPlan, cheapestResource)) {
+      return 'Бахнул, но этот вариант не дешевле сохранённого.';
+    }
+
+    const nextPlans = {
+      ...savedPlans,
+      [target.id]: normalizedPlan,
+    };
+
+    setSavedPlans(nextPlans);
+    saveStoredPlans(nextPlans);
+
+    return 'Бахнул. Новый самый нищий вариант сохранён в localStorage.';
+  }
 
   return (
     <AnimatePresence mode="wait">
@@ -431,6 +550,9 @@ export function RaidCard({ target }) {
                       Количество <Strong>{resource.amount}</Strong>
                     </StatLine>
                     <StatLine>
+                      Урон <Strong>{resource.damage.toFixed(resource.damage % 1 ? 1 : 0)} HP</Strong>
+                    </StatLine>
+                    <StatLine>
                       {meta.priceLabel}
                       <PriceValue>
                         <PriceIcon src={getAssetSrc(meta.priceImage)} alt="" />
@@ -442,6 +564,18 @@ export function RaidCard({ target }) {
               );
             })}
           </ResourceGrid>
+
+          <SimulatorToggle
+            type="button"
+            whileTap={{ scale: 0.98 }}
+            onClick={() => setIsSimulatorOpen((currentValue) => !currentValue)}
+          >
+            {isSimulatorOpen ? 'Закрыть симуляцию рейда' : 'Симуляция рейда'}
+          </SimulatorToggle>
+
+          {isSimulatorOpen && (
+            <RaidSimulator key={target.id} target={target} onRaidComplete={handleRaidComplete} />
+          )}
 
           {cheapestResource && (
             <BestDeal
@@ -468,12 +602,12 @@ export function RaidCard({ target }) {
                     </BestImages>
                     <div>
                       <BestLabel>Самый дешевый вариант</BestLabel>
-                      <BestTitle>{cheapestResource.title}</BestTitle>
+                      <BestTitle>{getPlanTitle(cheapestResource)}</BestTitle>
                       <BestText>
-                        {cheapestResource.priceLabel}:{' '}
+                        Цена:{' '}
                         <PriceValue>
                           <PriceIcon src={getAssetSrc(priceMeta.priceImage)} alt="" />
-                          <Strong>{cheapestResource.price.toLocaleString('ru-RU')}</Strong>
+                          <Strong>{getPlanCostLabel(cheapestResource)}</Strong>
                         </PriceValue>
                         .{' '}
                         {cheapestResource.description}

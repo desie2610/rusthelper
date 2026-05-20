@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Layout } from './components/Layout';
+import { CraftCalculator } from './components/CraftCalculator';
 import { RaidCard } from './components/RaidCard';
 import { RaidSelector } from './components/RaidSelector';
 import { raidTargets } from './data/raidData';
@@ -23,6 +24,7 @@ function App() {
           onSelect={setSelectedTargetId}
         />
         <RaidCard target={selectedTarget} />
+        <CraftCalculator />
       </Layout>
     </>
   );
