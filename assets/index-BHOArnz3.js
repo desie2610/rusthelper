@@ -54,7 +54,331 @@ Error generating stack: `+e.message+`
             ${_}px !important;
             ${v}px !important;
           }
-        `),()=>{s.current?.removeAttribute(`data-motion-pop-id`),b.contains(y)&&b.removeChild(y)}},[t]),(0,P.jsx)(Pd,{isPresent:t,childRef:s,sizeRef:c,pop:a,children:a===!1?e:M.cloneElement(e,{ref:u})})}var Id=({children:e,initial:t,isPresent:n,onExitComplete:r,custom:i,presenceAffectsLayout:a,mode:o,anchorX:s,anchorY:c,root:l})=>{let u=dr(Ld),d=(0,M.useId)(),f=!0,p=(0,M.useMemo)(()=>(f=!1,{id:d,initial:t,isPresent:n,custom:i,onExitComplete:e=>{u.set(e,!0);for(let e of u.values())if(!e)return;r&&r()},register:e=>(u.set(e,!1),()=>u.delete(e))}),[n,u,r]);return a&&f&&(p={...p}),(0,M.useMemo)(()=>{u.forEach((e,t)=>u.set(t,!1))},[n]),M.useEffect(()=>{!n&&!u.size&&r&&r()},[n]),e=(0,P.jsx)(Fd,{pop:o===`popLayout`,isPresent:n,anchorX:s,anchorY:c,root:l,children:e}),(0,P.jsx)(pr.Provider,{value:p,children:e})};function Ld(){return new Map}function Rd(e=!0){let t=(0,M.useContext)(pr);if(t===null)return[!0,null];let{isPresent:n,onExitComplete:r,register:i}=t,a=(0,M.useId)();(0,M.useEffect)(()=>{if(e)return i(a)},[e]);let o=(0,M.useCallback)(()=>e&&r&&r(a),[a,r,e]);return!n&&r?[!1,o]:[!0]}var zd=e=>e.key||``;function Bd(e){let t=[];return M.Children.forEach(e,e=>{(0,M.isValidElement)(e)&&t.push(e)}),t}var Vd=({children:e,custom:t,initial:n=!0,onExitComplete:r,presenceAffectsLayout:i=!0,mode:a=`sync`,propagate:o=!1,anchorX:s=`left`,anchorY:c=`top`,root:l})=>{let[u,d]=Rd(o),f=(0,M.useMemo)(()=>Bd(e),[e]),p=o&&!u?[]:f.map(zd),m=(0,M.useRef)(!0),h=(0,M.useRef)(f),g=dr(()=>new Map),_=(0,M.useRef)(new Set),[v,y]=(0,M.useState)(f),[b,x]=(0,M.useState)(f);fr(()=>{m.current=!1,h.current=f;for(let e=0;e<b.length;e++){let t=zd(b[e]);p.includes(t)?(g.delete(t),_.current.delete(t)):g.get(t)!==!0&&g.set(t,!1)}},[b,p.length,p.join(`-`)]);let S=[];if(f!==v){let e=[...f];for(let t=0;t<b.length;t++){let n=b[t],r=zd(n);p.includes(r)||(e.splice(t,0,n),S.push(n))}return a===`wait`&&S.length&&(e=S),x(Bd(e)),y(f),null}let{forceRender:C}=(0,M.useContext)(ur);return(0,P.jsx)(P.Fragment,{children:b.map(e=>{let v=zd(e),y=o&&!u?!1:f===b||p.includes(v);return(0,P.jsx)(Id,{isPresent:y,initial:!m.current||n?void 0:!1,custom:t,presenceAffectsLayout:i,mode:a,root:l,onExitComplete:y?void 0:()=>{if(_.current.has(v))return;if(g.has(v))_.current.add(v),g.set(v,!0);else return;let e=!0;g.forEach(t=>{t||(e=!1)}),e&&(C?.(),x(h.current),o&&d?.(),r&&r())},anchorX:s,anchorY:c,children:e},v)})})},Hd=(0,M.createContext)({strict:!1}),Ud={animation:[`animate`,`variants`,`whileHover`,`whileTap`,`exit`,`whileInView`,`whileFocus`,`whileDrag`],exit:[`exit`],drag:[`drag`,`dragControls`],focus:[`whileFocus`],hover:[`whileHover`,`onHoverStart`,`onHoverEnd`],tap:[`whileTap`,`onTap`,`onTapStart`,`onTapCancel`],pan:[`onPan`,`onPanStart`,`onPanSessionStart`,`onPanEnd`],inView:[`whileInView`,`onViewportEnter`,`onViewportLeave`],layout:[`layout`,`layoutId`]},Wd=!1;function Gd(){if(Wd)return;let e={};for(let t in Ud)e[t]={isEnabled:e=>Ud[t].some(t=>!!e[t])};nl(e),Wd=!0}function Kd(){return Gd(),rl()}function qd(e){let t=Kd();for(let n in e)t[n]={...t[n],...e[n]};nl(t)}var Jd=new Set(`animate.exit.variants.initial.style.values.variants.transition.transformTemplate.custom.inherit.onBeforeLayoutMeasure.onAnimationStart.onAnimationComplete.onUpdate.onDragStart.onDrag.onDragEnd.onMeasureDragConstraints.onDirectionLock.onDragTransitionEnd._dragX._dragY.onHoverStart.onHoverEnd.onViewportEnter.onViewportLeave.globalTapTarget.propagate.ignoreStrict.viewport`.split(`.`));function Yd(e){return e.startsWith(`while`)||e.startsWith(`drag`)&&e!==`draggable`||e.startsWith(`layout`)||e.startsWith(`onTap`)||e.startsWith(`onPan`)||e.startsWith(`onLayout`)||Jd.has(e)}var Xd=e=>!Yd(e);function Zd(e){typeof e==`function`&&(Xd=t=>t.startsWith(`on`)?!Yd(t):e(t))}try{Zd((ee(),d(S)).default)}catch{}function Qd(e,t,n){let r={};for(let i in e)i===`values`&&typeof e.values==`object`||xs(e[i])||(Xd(i)||n===!0&&Yd(i)||!t&&!Yd(i)||e.draggable&&i.startsWith(`onDrag`))&&(r[i]=e[i]);return r}var $d=(0,M.createContext)({});function ef(e,t){if(qc(e)){let{initial:t,animate:n}=e;return{initial:t===!1||Wc(t)?t:void 0,animate:Wc(n)?n:void 0}}return e.inherit===!1?{}:t}function tf(e){let{initial:t,animate:n}=ef(e,(0,M.useContext)($d));return(0,M.useMemo)(()=>({initial:t,animate:n}),[nf(t),nf(n)])}function nf(e){return Array.isArray(e)?e.join(` `):e}var rf=()=>({style:{},transform:{},transformOrigin:{},vars:{}});function af(e,t,n){for(let r in t)!xs(t[r])&&!Il(r,n)&&(e[r]=t[r])}function of({transformTemplate:e},t){return(0,M.useMemo)(()=>{let n=rf();return Al(n,t,e),Object.assign({},n.vars,n.style)},[t])}function sf(e,t){let n=e.style||{},r={};return af(r,n,e),Object.assign(r,of(e,t)),r}function cf(e,t){let n={},r=sf(e,t);return e.drag&&e.dragListener!==!1&&(n.draggable=!1,r.userSelect=r.WebkitUserSelect=r.WebkitTouchCallout=`none`,r.touchAction=e.drag===!0?`none`:`pan-${e.drag===`x`?`y`:`x`}`),e.tabIndex===void 0&&(e.onTap||e.onTapStart||e.whileTap)&&(n.tabIndex=0),n.style=r,n}var lf=()=>({...rf(),attrs:{}});function uf(e,t,n,r){let i=(0,M.useMemo)(()=>{let n=lf();return zl(n,t,Vl(r),e.transformTemplate,e.style),{...n.attrs,style:{...n.style}}},[t]);if(e.style){let t={};af(t,e.style,e),i.style={...t,...i.style}}return i}var df=[`animate`,`circle`,`defs`,`desc`,`ellipse`,`g`,`image`,`line`,`filter`,`marker`,`mask`,`metadata`,`path`,`pattern`,`polygon`,`polyline`,`rect`,`stop`,`switch`,`symbol`,`svg`,`text`,`tspan`,`use`,`view`];function ff(e){return typeof e!=`string`||e.includes(`-`)?!1:!!(df.indexOf(e)>-1||/[A-Z]/u.test(e))}function pf(e,t,n,{latestValues:r},i,a=!1,o){let s=(o??ff(e)?uf:cf)(t,r,i,e),c=Qd(t,typeof e==`string`,a),l=e===M.Fragment?{}:{...c,...s,ref:n},{children:u}=t,d=(0,M.useMemo)(()=>xs(u)?u.get():u,[u]);return(0,M.createElement)(e,{...l,children:d})}function mf({scrapeMotionValuesFromProps:e,createRenderState:t},n,r,i){return{latestValues:hf(n,r,i,e),renderState:t()}}function hf(e,t,n,r){let i={},a=r(e,{});for(let e in a)i[e]=qu(a[e]);let{initial:o,animate:s}=e,c=qc(e),l=Jc(e);t&&l&&!c&&e.inherit!==!1&&(o===void 0&&(o=t.initial),s===void 0&&(s=t.animate));let u=n?n.initial===!1:!1;u||=o===!1;let d=u?s:o;if(d&&typeof d!=`boolean`&&!Uc(d)){let t=Array.isArray(d)?d:[d];for(let n=0;n<t.length;n++){let r=ls(e,t[n]);if(r){let{transitionEnd:e,transition:t,...n}=r;for(let e in n){let t=n[e];if(Array.isArray(t)){let e=u?t.length-1:0;t=t[e]}t!==null&&(i[e]=t)}for(let t in e)i[t]=e[t]}}}return i}var gf=e=>(t,n)=>{let r=(0,M.useContext)($d),i=(0,M.useContext)(pr),a=()=>mf(e,t,r,i);return n?a():dr(a)},_f=gf({scrapeMotionValuesFromProps:Ll,createRenderState:rf}),vf=gf({scrapeMotionValuesFromProps:Ul,createRenderState:lf}),yf=Symbol.for(`motionComponentSymbol`);function bf(e,t,n){let r=(0,M.useRef)(n);(0,M.useInsertionEffect)(()=>{r.current=n});let i=(0,M.useRef)(null);return(0,M.useCallback)(n=>{n&&e.onMount?.(n),t&&(n?t.mount(n):t.unmount());let a=r.current;if(typeof a==`function`)if(n){let e=a(n);typeof e==`function`&&(i.current=e)}else i.current?(i.current(),i.current=null):a(n);else a&&(a.current=n)},[t])}var xf=(0,M.createContext)({});function Sf(e){return e&&typeof e==`object`&&Object.prototype.hasOwnProperty.call(e,`current`)}function Cf(e,t,n,r,i,a){let{visualElement:o}=(0,M.useContext)($d),s=(0,M.useContext)(Hd),c=(0,M.useContext)(pr),l=(0,M.useContext)(jd),u=l.reducedMotion,d=l.skipAnimations,f=(0,M.useRef)(null),p=(0,M.useRef)(!1);r||=s.renderer,!f.current&&r&&(f.current=r(e,{visualState:t,parent:o,props:n,presenceContext:c,blockInitialAnimation:c?c.initial===!1:!1,reducedMotionConfig:u,skipAnimations:d,isSVG:a}),p.current&&f.current&&(f.current.manuallyAnimateOnMount=!0));let m=f.current,h=(0,M.useContext)(xf);m&&!m.projection&&i&&(m.type===`html`||m.type===`svg`)&&wf(f.current,n,i,h);let g=(0,M.useRef)(!1);(0,M.useInsertionEffect)(()=>{m&&g.current&&m.update(n,c)});let _=n[Ts],v=(0,M.useRef)(!!_&&typeof window<`u`&&!window.MotionHandoffIsComplete?.(_)&&window.MotionHasOptimisedAnimation?.(_));return fr(()=>{p.current=!0,m&&(g.current=!0,window.MotionIsMounted=!0,m.updateFeatures(),m.scheduleRenderMicrotask(),v.current&&m.animationState&&m.animationState.animateChanges())}),(0,M.useEffect)(()=>{m&&(!v.current&&m.animationState&&m.animationState.animateChanges(),v.current&&=(queueMicrotask(()=>{window.MotionHandoffMarkAsComplete?.(_)}),!1),m.enteringChildren=void 0)}),m}function wf(e,t,n,r){let{layoutId:i,layout:a,drag:o,dragConstraints:s,layoutScroll:c,layoutRoot:l,layoutAnchor:u,layoutCrossfade:d}=t;e.projection=new n(e.latestValues,t[`data-framer-portal-id`]?void 0:Tf(e.parent)),e.projection.setOptions({layoutId:i,layout:a,alwaysMeasureLayout:!!o||s&&Sf(s),visualElement:e,animationType:typeof a==`string`?a:`both`,initialPromotionConfig:r,crossfade:d,layoutScroll:c,layoutRoot:l,layoutAnchor:u})}function Tf(e){if(e)return e.options.allowProjection===!1?Tf(e.parent):e.projection}function Ef(e,{forwardMotionProps:t=!1,type:n}={},r,i){r&&qd(r);let a=n?n===`svg`:ff(e),o=a?vf:_f;function s(n,s){let c,l={...(0,M.useContext)(jd),...n,layoutId:Df(n)},{isStatic:u}=l,d=tf(n),f=o(n,u);if(!u&&typeof window<`u`){Of(l,r);let t=kf(l);c=t.MeasureLayout,d.visualElement=Cf(e,f,l,i,t.ProjectionNode,a)}return(0,P.jsxs)($d.Provider,{value:d,children:[c&&d.visualElement?(0,P.jsx)(c,{visualElement:d.visualElement,...l}):null,pf(e,n,bf(f,d.visualElement,s),f,u,t,a)]})}s.displayName=`motion.${typeof e==`string`?e:`create(${e.displayName??e.name??``})`}`;let c=(0,M.forwardRef)(s);return c[yf]=e,c}function Df({layoutId:e}){let t=(0,M.useContext)(ur).id;return t&&e!==void 0?t+`-`+e:e}function Of(e,t){(0,M.useContext)(Hd).strict}function kf(e){let{drag:t,layout:n}=Kd();if(!t&&!n)return{};let r={...t,...n};return{MeasureLayout:t?.isEnabled(e)||n?.isEnabled(e)?r.MeasureLayout:void 0,ProjectionNode:r.ProjectionNode}}function Af(e,t){if(typeof Proxy>`u`)return Ef;let n=new Map,r=(n,r)=>Ef(n,r,e,t);return new Proxy((e,t)=>r(e,t),{get:(i,a)=>a===`create`?r:(n.has(a)||n.set(a,Ef(a,void 0,e,t)),n.get(a))})}var jf=(e,t)=>t.isSVG??ff(e)?new Wl(t):new K(t,{allowProjection:e!==M.Fragment}),Mf=class extends ol{constructor(e){super(e),e.animationState||=Zl(e)}updateAnimationControlsSubscription(){let{animate:e}=this.node.getProps();Uc(e)&&(this.unmountControls=e.subscribe(this.node))}mount(){this.updateAnimationControlsSubscription()}update(){let{animate:e}=this.node.getProps(),{animate:t}=this.node.prevProps||{};e!==t&&this.updateAnimationControlsSubscription()}unmount(){this.node.animationState.reset(),this.unmountControls?.()}},Nf=0,Pf={animation:{Feature:Mf},exit:{Feature:class extends ol{constructor(){super(...arguments),this.id=Nf++,this.isExitComplete=!1}update(){if(!this.node.presenceContext)return;let{isPresent:e,onExitComplete:t}=this.node.presenceContext,{isPresent:n}=this.node.prevPresenceContext||{};if(!this.node.animationState||e===n)return;if(e&&n===!1){if(this.isExitComplete){let{initial:e,custom:t}=this.node.getProps();if(typeof e==`string`||typeof e==`object`&&e&&!Array.isArray(e)){let n=us(this.node,e,t);if(n){let{transition:e,transitionEnd:t,...r}=n;for(let e in r)this.node.getValue(e)?.jump(r[e])}}this.node.animationState.reset(),this.node.animationState.animateChanges()}else this.node.animationState.setActive(`exit`,!1);this.isExitComplete=!1;return}let r=this.node.animationState.setActive(`exit`,!e);t&&!e&&r.then(()=>{this.isExitComplete=!0,t(this.id)})}mount(){let{register:e,onExitComplete:t}=this.node.presenceContext||{};t&&t(this.id),e&&(this.unmount=e(this.id))}unmount(){}}}};function Ff(e){return{point:{x:e.pageX,y:e.pageY}}}var If=e=>t=>lc(t)&&e(t,Ff(t));function Lf(e,t,n,r){return Wu(e,t,If(n),r)}var Rf=({current:e})=>e?e.ownerDocument.defaultView:null,zf=(e,t)=>Math.abs(e-t);function Bf(e,t){let n=zf(e.x,t.x),r=zf(e.y,t.y);return Math.sqrt(n**2+r**2)}var Vf=new Set([`auto`,`scroll`]),Hf=class{constructor(e,t,{transformPagePoint:n,contextWindow:r=window,dragSnapToOrigin:i=!1,distanceThreshold:a=3,element:o}={}){if(this.startEvent=null,this.lastMoveEvent=null,this.lastMoveEventInfo=null,this.lastRawMoveEventInfo=null,this.handlers={},this.contextWindow=window,this.scrollPositions=new Map,this.removeScrollListeners=null,this.onElementScroll=e=>{this.handleScroll(e.target)},this.onWindowScroll=()=>{this.handleScroll(window)},this.updatePoint=()=>{if(!(this.lastMoveEvent&&this.lastMoveEventInfo))return;this.lastRawMoveEventInfo&&(this.lastMoveEventInfo=Uf(this.lastRawMoveEventInfo,this.transformPagePoint));let e=Gf(this.lastMoveEventInfo,this.history),t=this.startEvent!==null,n=Bf(e.offset,{x:0,y:0})>=this.distanceThreshold;if(!t&&!n)return;let{point:r}=e,{timestamp:i}=ni;this.history.push({...r,timestamp:i});let{onStart:a,onMove:o}=this.handlers;t||(a&&a(this.lastMoveEvent,e),this.startEvent=this.lastMoveEvent),o&&o(this.lastMoveEvent,e)},this.handlePointerMove=(e,t)=>{this.lastMoveEvent=e,this.lastRawMoveEventInfo=t,this.lastMoveEventInfo=Uf(t,this.transformPagePoint),I.update(this.updatePoint,!0)},this.handlePointerUp=(e,t)=>{this.end();let{onEnd:n,onSessionEnd:r,resumeAnimation:i}=this.handlers;if((this.dragSnapToOrigin||!this.startEvent)&&i&&i(),!(this.lastMoveEvent&&this.lastMoveEventInfo))return;let a=Gf(e.type===`pointercancel`?this.lastMoveEventInfo:Uf(t,this.transformPagePoint),this.history);this.startEvent&&n&&n(e,a),r&&r(e,a)},!lc(e))return;this.dragSnapToOrigin=i,this.handlers=t,this.transformPagePoint=n,this.distanceThreshold=a,this.contextWindow=r||window;let s=Uf(Ff(e),this.transformPagePoint),{point:c}=s,{timestamp:l}=ni;this.history=[{...c,timestamp:l}];let{onSessionStart:u}=t;u&&u(e,Gf(s,this.history)),this.removeListeners=Cr(Lf(this.contextWindow,`pointermove`,this.handlePointerMove),Lf(this.contextWindow,`pointerup`,this.handlePointerUp),Lf(this.contextWindow,`pointercancel`,this.handlePointerUp)),o&&this.startScrollTracking(o)}startScrollTracking(e){let t=e.parentElement;for(;t;){let e=getComputedStyle(t);(Vf.has(e.overflowX)||Vf.has(e.overflowY))&&this.scrollPositions.set(t,{x:t.scrollLeft,y:t.scrollTop}),t=t.parentElement}this.scrollPositions.set(window,{x:window.scrollX,y:window.scrollY}),window.addEventListener(`scroll`,this.onElementScroll,{capture:!0}),window.addEventListener(`scroll`,this.onWindowScroll),this.removeScrollListeners=()=>{window.removeEventListener(`scroll`,this.onElementScroll,{capture:!0}),window.removeEventListener(`scroll`,this.onWindowScroll)}}handleScroll(e){let t=this.scrollPositions.get(e);if(!t)return;let n=e===window,r=n?{x:window.scrollX,y:window.scrollY}:{x:e.scrollLeft,y:e.scrollTop},i={x:r.x-t.x,y:r.y-t.y};i.x===0&&i.y===0||(n?this.lastMoveEventInfo&&(this.lastMoveEventInfo.point.x+=i.x,this.lastMoveEventInfo.point.y+=i.y):this.history.length>0&&(this.history[0].x-=i.x,this.history[0].y-=i.y),this.scrollPositions.set(e,r),I.update(this.updatePoint,!0))}updateHandlers(e){this.handlers=e}end(){this.removeListeners&&this.removeListeners(),this.removeScrollListeners&&this.removeScrollListeners(),this.scrollPositions.clear(),ti(this.updatePoint)}};function Uf(e,t){return t?{point:t(e.point)}:e}function Wf(e,t){return{x:e.x-t.x,y:e.y-t.y}}function Gf({point:e},t){return{point:e,delta:Wf(e,qf(t)),offset:Wf(e,Kf(t)),velocity:Jf(t,.1)}}function Kf(e){return e[0]}function qf(e){return e[e.length-1]}function Jf(e,t){if(e.length<2)return{x:0,y:0};let n=e.length-1,r=null,i=qf(e);for(;n>=0&&(r=e[n],!(i.timestamp-r.timestamp>F(t)));)n--;if(!r)return{x:0,y:0};r===e[0]&&e.length>2&&i.timestamp-r.timestamp>F(t)*2&&(r=e[1]);let a=Er(i.timestamp-r.timestamp);if(a===0)return{x:0,y:0};let o={x:(i.x-r.x)/a,y:(i.y-r.y)/a};return o.x===1/0&&(o.x=0),o.y===1/0&&(o.y=0),o}function Yf(e,{min:t,max:n},r){return t!==void 0&&e<t?e=r?B(t,e,r.min):Math.max(e,t):n!==void 0&&e>n&&(e=r?B(n,e,r.max):Math.min(e,n)),e}function Xf(e,t,n){return{min:t===void 0?void 0:e.min+t,max:n===void 0?void 0:e.max+n-(e.max-e.min)}}function Zf(e,{top:t,left:n,bottom:r,right:i}){return{x:Xf(e.x,n,i),y:Xf(e.y,t,r)}}function Qf(e,t){let n=t.min-e.min,r=t.max-e.max;return t.max-t.min<e.max-e.min&&([n,r]=[r,n]),{min:n,max:r}}function $f(e,t){return{x:Qf(e.x,t.x),y:Qf(e.y,t.y)}}function ep(e,t){let n=.5,r=uu(e),i=uu(t);return i>r?n=wr(t.min,t.max-r,e.min):r>i&&(n=wr(e.min,e.max-i,t.min)),gr(0,1,n)}function tp(e,t){let n={};return t.min!==void 0&&(n.min=t.min-e.min),t.max!==void 0&&(n.max=t.max-e.min),n}var np=.35;function rp(e=np){return e===!1?e=0:e===!0&&(e=np),{x:ip(e,`left`,`right`),y:ip(e,`top`,`bottom`)}}function ip(e,t,n){return{min:ap(e,t),max:ap(e,n)}}function ap(e,t){return typeof e==`number`?e:e[t]||0}var op=new WeakMap,sp=class{constructor(e){this.openDragLock=null,this.isDragging=!1,this.currentDirection=null,this.originPoint={x:0,y:0},this.constraints=!1,this.hasMutatedConstraints=!1,this.elastic=Vc(),this.latestPointerEvent=null,this.latestPanInfo=null,this.visualElement=e}start(e,{snapToCursor:t=!1,distanceThreshold:n}={}){let{presenceContext:r}=this.visualElement;if(r&&r.isPresent===!1)return;let i=e=>{t&&this.snapToCursor(Ff(e).point),this.stopAnimation()},a=(e,t)=>{let{drag:n,dragPropagation:r,onDragStart:i}=this.getProps();if(n&&!r&&(this.openDragLock&&this.openDragLock(),this.openDragLock=ic(n),!this.openDragLock))return;this.latestPointerEvent=e,this.latestPanInfo=t,this.isDragging=!0,this.currentDirection=null,this.resolveConstraints(),this.visualElement.projection&&(this.visualElement.projection.isAnimationBlocked=!0,this.visualElement.projection.target=void 0),Mu(e=>{let t=this.getAxisMotionValue(e).get()||0;if(Ai.test(t)){let{projection:n}=this.visualElement;if(n&&n.layout){let r=n.layout.layoutBox[e];r&&(t=uu(r)*(parseFloat(t)/100))}}this.originPoint[e]=t}),i&&I.update(()=>i(e,t),!1,!0),Cs(this.visualElement,`transform`);let{animationState:a}=this.visualElement;a&&a.setActive(`whileDrag`,!0)},o=(e,t)=>{this.latestPointerEvent=e,this.latestPanInfo=t;let{dragPropagation:n,dragDirectionLock:r,onDirectionLock:i,onDrag:a}=this.getProps();if(!n&&!this.openDragLock)return;let{offset:o}=t;if(r&&this.currentDirection===null){this.currentDirection=dp(o),this.currentDirection!==null&&i&&i(this.currentDirection);return}this.updateAxis(`x`,t.point,o),this.updateAxis(`y`,t.point,o),this.visualElement.render(),a&&I.update(()=>a(e,t),!1,!0)},s=(e,t)=>{this.latestPointerEvent=e,this.latestPanInfo=t,this.stop(e,t),this.latestPointerEvent=null,this.latestPanInfo=null},c=()=>{let{dragSnapToOrigin:e}=this.getProps();(e||this.constraints)&&this.startAnimation({x:0,y:0})},{dragSnapToOrigin:l}=this.getProps();this.panSession=new Hf(e,{onSessionStart:i,onStart:a,onMove:o,onSessionEnd:s,resumeAnimation:c},{transformPagePoint:this.visualElement.getTransformPagePoint(),dragSnapToOrigin:l,distanceThreshold:n,contextWindow:Rf(this.visualElement),element:this.visualElement.current})}stop(e,t){let n=e||this.latestPointerEvent,r=t||this.latestPanInfo,i=this.isDragging;if(this.cancel(),!i||!r||!n)return;let{velocity:a}=r;this.startAnimation(a);let{onDragEnd:o}=this.getProps();o&&I.postRender(()=>o(n,r))}cancel(){this.isDragging=!1;let{projection:e,animationState:t}=this.visualElement;e&&(e.isAnimationBlocked=!1),this.endPanSession();let{dragPropagation:n}=this.getProps();!n&&this.openDragLock&&(this.openDragLock(),this.openDragLock=null),t&&t.setActive(`whileDrag`,!1)}endPanSession(){this.panSession&&this.panSession.end(),this.panSession=void 0}updateAxis(e,t,n){let{drag:r}=this.getProps();if(!n||!up(e,r,this.currentDirection))return;let i=this.getAxisMotionValue(e),a=this.originPoint[e]+n[e];this.constraints&&this.constraints[e]&&(a=Yf(a,this.constraints[e],this.elastic[e])),i.set(a)}resolveConstraints(){let{dragConstraints:e,dragElastic:t}=this.getProps(),n=this.visualElement.projection&&!this.visualElement.projection.layout?this.visualElement.projection.measure(!1):this.visualElement.projection?.layout,r=this.constraints;e&&Sf(e)?this.constraints||=this.resolveRefConstraints():e&&n?this.constraints=Zf(n.layoutBox,e):this.constraints=!1,this.elastic=rp(t),r!==this.constraints&&!Sf(e)&&n&&this.constraints&&!this.hasMutatedConstraints&&Mu(e=>{this.constraints!==!1&&this.getAxisMotionValue(e)&&(this.constraints[e]=tp(n.layoutBox[e],this.constraints[e]))})}resolveRefConstraints(){let{dragConstraints:e,onMeasureDragConstraints:t}=this.getProps();if(!e||!Sf(e))return!1;let n=e.current,{projection:r}=this.visualElement;if(!r||!r.layout)return!1;r.root&&(r.root.scroll=void 0,r.root.updateScroll());let i=El(n,r.root,this.visualElement.getTransformPagePoint()),a=$f(r.layout.layoutBox,i);if(t){let e=t(G(a));this.hasMutatedConstraints=!!e,e&&(a=sl(e))}return a}startAnimation(e){let{drag:t,dragMomentum:n,dragElastic:r,dragTransition:i,dragSnapToOrigin:a,onDragTransitionEnd:o}=this.getProps(),s=this.constraints||{},c=Mu(o=>{if(!up(o,t,this.currentDirection))return;let c=s&&s[o]||{};(a===!0||a===o)&&(c={min:0,max:0});let l=r?200:1e6,u=r?40:1e7,d={type:`inertia`,velocity:n?e[o]:0,bounceStiffness:l,bounceDamping:u,timeConstant:750,restDelta:1,restSpeed:10,...i,...c};return this.startAxisValueAnimation(o,d)});return Promise.all(c).then(o)}startAxisValueAnimation(e,t){let n=this.getAxisMotionValue(e);return Cs(this.visualElement,e),n.start(ss(e,n,0,t,this.visualElement,!1))}stopAnimation(){Mu(e=>this.getAxisMotionValue(e).stop())}getAxisMotionValue(e){let t=`_drag${e.toUpperCase()}`;return this.visualElement.getProps()[t]||this.visualElement.getValue(e,this.visualElement.latestValues[e]??0)}snapToCursor(e){Mu(t=>{let{drag:n}=this.getProps();if(!up(t,n,this.currentDirection))return;let{projection:r}=this.visualElement,i=this.getAxisMotionValue(t);if(r&&r.layout){let{min:n,max:a}=r.layout.layoutBox[t],o=i.get()||0;i.set(e[t]-B(n,a,.5)+o)}})}scalePositionWithinConstraints(){if(!this.visualElement.current)return;let{drag:e,dragConstraints:t}=this.getProps(),{projection:n}=this.visualElement;if(!Sf(t)||!n||!this.constraints)return;this.stopAnimation();let r={x:0,y:0};Mu(e=>{let t=this.getAxisMotionValue(e);if(t&&this.constraints!==!1){let n=t.get();r[e]=ep({min:n,max:n},this.constraints[e])}});let{transformTemplate:i}=this.visualElement.getProps();this.visualElement.current.style.transform=i?i({},``):`none`,n.root&&n.root.updateScroll(),n.updateLayout(),this.constraints=!1,this.resolveConstraints(),Mu(t=>{if(!up(t,e,null))return;let n=this.getAxisMotionValue(t),{min:i,max:a}=this.constraints[t];n.set(B(i,a,r[t]))}),this.visualElement.render()}addListeners(){if(!this.visualElement.current)return;op.set(this.visualElement,this);let e=this.visualElement.current,t=Lf(e,`pointerdown`,t=>{let{drag:n,dragListener:r=!0}=this.getProps(),i=t.target,a=i!==e&&pc(i);n&&r&&!a&&this.start(t)}),n,r=()=>{let{dragConstraints:t}=this.getProps();Sf(t)&&t.current&&(this.constraints=this.resolveRefConstraints(),n||=lp(e,t.current,()=>this.scalePositionWithinConstraints()))},{projection:i}=this.visualElement,a=i.addEventListener(`measure`,r);i&&!i.layout&&(i.root&&i.root.updateScroll(),i.updateLayout()),I.read(r);let o=Wu(window,`resize`,()=>this.scalePositionWithinConstraints()),s=i.addEventListener(`didUpdate`,(({delta:e,hasLayoutChanged:t})=>{this.isDragging&&t&&(Mu(t=>{let n=this.getAxisMotionValue(t);n&&(this.originPoint[t]+=e[t].translate,n.set(n.get()+e[t].translate))}),this.visualElement.render())}));return()=>{o(),t(),a(),s&&s(),n&&n()}}getProps(){let e=this.visualElement.getProps(),{drag:t=!1,dragDirectionLock:n=!1,dragPropagation:r=!1,dragConstraints:i=!1,dragElastic:a=np,dragMomentum:o=!0}=e;return{...e,drag:t,dragDirectionLock:n,dragPropagation:r,dragConstraints:i,dragElastic:a,dragMomentum:o}}};function cp(e){let t=!0;return()=>{if(t){t=!1;return}e()}}function lp(e,t,n){let r=Fc(e,cp(n)),i=Fc(t,cp(n));return()=>{r(),i()}}function up(e,t,n){return(t===!0||t===e)&&(n===null||n===e)}function dp(e,t=10){let n=null;return Math.abs(e.y)>t?n=`y`:Math.abs(e.x)>t&&(n=`x`),n}var fp=class extends ol{constructor(e){super(e),this.removeGroupControls=Sr,this.removeListeners=Sr,this.controls=new sp(e)}mount(){let{dragControls:e}=this.node.getProps();e&&(this.removeGroupControls=e.subscribe(this.controls)),this.removeListeners=this.controls.addListeners()||Sr}update(){let{dragControls:e}=this.node.getProps(),{dragControls:t}=this.node.prevProps||{};e!==t&&(this.removeGroupControls(),e&&(this.removeGroupControls=e.subscribe(this.controls)))}unmount(){this.removeGroupControls(),this.removeListeners(),this.controls.isDragging||this.controls.endPanSession()}},pp=e=>(t,n)=>{e&&I.update(()=>e(t,n),!1,!0)},mp=class extends ol{constructor(){super(...arguments),this.removePointerDownListener=Sr}onPointerDown(e){this.session=new Hf(e,this.createPanHandlers(),{transformPagePoint:this.node.getTransformPagePoint(),contextWindow:Rf(this.node)})}createPanHandlers(){let{onPanSessionStart:e,onPanStart:t,onPan:n,onPanEnd:r}=this.node.getProps();return{onSessionStart:pp(e),onStart:pp(t),onMove:pp(n),onEnd:(e,t)=>{delete this.session,r&&I.postRender(()=>r(e,t))}}}mount(){this.removePointerDownListener=Lf(this.node.current,`pointerdown`,e=>this.onPointerDown(e))}update(){this.session&&this.session.updateHandlers(this.createPanHandlers())}unmount(){this.removePointerDownListener(),this.session&&this.session.end()}},hp=!1,gp=class extends M.Component{componentDidMount(){let{visualElement:e,layoutGroup:t,switchLayoutGroup:n,layoutId:r}=this.props,{projection:i}=e;i&&(t.group&&t.group.add(i),n&&n.register&&r&&n.register(i),hp&&i.root.didUpdate(),i.addEventListener(`animationComplete`,()=>{this.safeToRemove()}),i.setOptions({...i.options,layoutDependency:this.props.layoutDependency,onExitComplete:()=>this.safeToRemove()})),Yu.hasEverUpdated=!0}getSnapshotBeforeUpdate(e){let{layoutDependency:t,visualElement:n,drag:r,isPresent:i}=this.props,{projection:a}=n;return a?(a.isPresent=i,e.layoutDependency!==t&&a.setOptions({...a.options,layoutDependency:t}),hp=!0,r||e.layoutDependency!==t||t===void 0||e.isPresent!==i?a.willUpdate():this.safeToRemove(),e.isPresent!==i&&(i?a.promote():a.relegate()||I.postRender(()=>{let e=a.getStack();(!e||!e.members.length)&&this.safeToRemove()})),null):null}componentDidUpdate(){let{visualElement:e,layoutAnchor:t}=this.props,{projection:n}=e;n&&(n.options.layoutAnchor=t,n.root.didUpdate(),ec.postRender(()=>{!n.currentAnimation&&n.isLead()&&this.safeToRemove()}))}componentWillUnmount(){let{visualElement:e,layoutGroup:t,switchLayoutGroup:n}=this.props,{projection:r}=e;hp=!0,r&&(r.scheduleCheckAfterUnmount(),t&&t.group&&t.group.remove(r),n&&n.deregister&&n.deregister(r))}safeToRemove(){let{safeToRemove:e}=this.props;e&&e()}render(){return null}};function _p(e){let[t,n]=Rd(),r=(0,M.useContext)(ur);return(0,P.jsx)(gp,{...e,layoutGroup:r,switchLayoutGroup:(0,M.useContext)(xf),isPresent:t,safeToRemove:n})}var vp={pan:{Feature:mp},drag:{Feature:fp,ProjectionNode:Ad,MeasureLayout:_p}};function yp(e,t,n){let{props:r}=e;e.animationState&&r.whileHover&&e.animationState.setActive(`whileHover`,n===`Start`);let i=r[`onHover`+n];i&&I.postRender(()=>i(t,Ff(t)))}var bp=class extends ol{mount(){let{current:e}=this.node;e&&(this.unmount=sc(e,(e,t)=>(yp(this.node,t,`Start`),e=>yp(this.node,e,`End`))))}unmount(){}},xp=class extends ol{constructor(){super(...arguments),this.isActive=!1}onFocus(){let e=!1;try{e=this.node.current.matches(`:focus-visible`)}catch{e=!0}!e||!this.node.animationState||(this.node.animationState.setActive(`whileFocus`,!0),this.isActive=!0)}onBlur(){!this.isActive||!this.node.animationState||(this.node.animationState.setActive(`whileFocus`,!1),this.isActive=!1)}mount(){this.unmount=Cr(Wu(this.node.current,`focus`,()=>this.onFocus()),Wu(this.node.current,`blur`,()=>this.onBlur()))}unmount(){}};function Sp(e,t,n){let{props:r}=e;if(e.current instanceof HTMLButtonElement&&e.current.disabled)return;e.animationState&&r.whileTap&&e.animationState.setActive(`whileTap`,n===`Start`);let i=r[`onTap`+(n===`End`?``:n)];i&&I.postRender(()=>i(t,Ff(t)))}var Cp=class extends ol{mount(){let{current:e}=this.node;if(!e)return;let{globalTapTarget:t,propagate:n}=this.node.props;this.unmount=bc(e,(e,t)=>(Sp(this.node,t,`Start`),(e,{success:t})=>Sp(this.node,e,t?`End`:`Cancel`)),{useGlobalTarget:t,stopPropagation:n?.tap===!1})}unmount(){}},wp=new WeakMap,Tp=new WeakMap,Ep=e=>{let t=wp.get(e.target);t&&t(e)},Dp=e=>{e.forEach(Ep)};function Op({root:e,...t}){let n=e||document;Tp.has(n)||Tp.set(n,{});let r=Tp.get(n),i=JSON.stringify(t);return r[i]||(r[i]=new IntersectionObserver(Dp,{root:e,...t})),r[i]}function kp(e,t,n){let r=Op(t);return wp.set(e,n),r.observe(e),()=>{wp.delete(e),r.unobserve(e)}}var Ap={some:0,all:1},jp=class extends ol{constructor(){super(...arguments),this.hasEnteredView=!1,this.isInView=!1}startObserver(){this.stopObserver?.();let{viewport:e={}}=this.node.getProps(),{root:t,margin:n,amount:r=`some`,once:i}=e,a={root:t?t.current:void 0,rootMargin:n,threshold:typeof r==`number`?r:Ap[r]},o=e=>{let{isIntersecting:t}=e;if(this.isInView===t||(this.isInView=t,i&&!t&&this.hasEnteredView))return;t&&(this.hasEnteredView=!0),this.node.animationState&&this.node.animationState.setActive(`whileInView`,t);let{onViewportEnter:n,onViewportLeave:r}=this.node.getProps(),a=t?n:r;a&&a(e)};this.stopObserver=kp(this.node.current,a,o)}mount(){this.startObserver()}update(){if(typeof IntersectionObserver>`u`)return;let{props:e,prevProps:t}=this.node;[`amount`,`margin`,`root`].some(Mp(e,t))&&this.startObserver()}unmount(){this.stopObserver?.(),this.hasEnteredView=!1,this.isInView=!1}};function Mp({viewport:e={}},{viewport:t={}}={}){return n=>e[n]!==t[n]}var Np={inView:{Feature:jp},tap:{Feature:Cp},focus:{Feature:xp},hover:{Feature:bp}},Pp={layout:{ProjectionNode:Ad,MeasureLayout:_p}},Fp=Af({...Pf,...Np,...vp,...Pp},jf),Ip=[{id:`wooden-door`,name:`Деревянная дверь`,type:`wood`,health:200,image:`raid-assets/targets/wooden-door.webp`,durability:`200 HP`,resources:{rockets:{amount:1,sulfur:1400,damage:200},c4:{amount:1,sulfur:2200,damage:200},satchel:{amount:2,sulfur:960,damage:100},molotov:{amount:2,tnk:400,damage:100}}},{id:`sheet-metal-door`,name:`Железная дверь`,type:`metal`,health:250,image:`raid-assets/targets/sheet-metal-door.webp`,durability:`250 HP`,resources:{rockets:{amount:2,sulfur:2800,damage:125},c4:{amount:1,sulfur:2200,damage:250},satchel:{amount:4,sulfur:1920,damage:62.5}}},{id:`armored-door`,name:`МВК дверь`,type:`armored`,health:800,image:`raid-assets/targets/armored-door.webp`,durability:`800 HP`,resources:{rockets:{amount:5,sulfur:7e3,damage:160},c4:{amount:2,sulfur:4400,damage:400},satchel:{amount:12,sulfur:5760,damage:67}}},{id:`wooden-wall`,name:`Деревянная стена`,type:`wood`,health:250,image:`raid-assets/targets/wooden-wall.webp`,durability:`250 HP`,resources:{rockets:{amount:2,sulfur:2800,damage:125},c4:{amount:1,sulfur:2200,damage:250},satchel:{amount:3,sulfur:1440,damage:84},molotov:{amount:6,tnk:1200,damage:42}}},{id:`stone-wall`,name:`Каменная стена`,type:`stone`,health:500,image:`raid-assets/targets/stone-wall.webp`,durability:`500 HP`,resources:{rockets:{amount:4,sulfur:5600,damage:125},c4:{amount:2,sulfur:4400,damage:250},satchel:{amount:10,sulfur:4800,damage:50}}},{id:`sheet-metal-wall`,name:`Железная стена`,type:`metal`,health:1e3,image:`raid-assets/targets/sheet-metal-wall.webp`,durability:`1000 HP`,resources:{rockets:{amount:8,sulfur:11200,damage:125},c4:{amount:4,sulfur:8800,damage:250},satchel:{amount:23,sulfur:11040,damage:44}}},{id:`armored-wall`,name:`МВК стена`,type:`armored`,health:2e3,image:`raid-assets/targets/armored-wall.webp`,durability:`2000 HP`,resources:{rockets:{amount:15,sulfur:21e3,damage:134},c4:{amount:8,sulfur:17600,damage:250},satchel:{amount:46,sulfur:22080,damage:44}}},{id:`sheet-metal-hatch`,name:`Железный люк`,type:`metal`,health:250,image:`raid-assets/targets/sheet-metal-hatch.webp`,durability:`250 HP`,resources:{rockets:{amount:2,sulfur:2800,damage:125},c4:{amount:1,sulfur:2200,damage:250},satchel:{amount:4,sulfur:1920,damage:62.5}}}],Lp={rockets:{label:`Ракеты`,color:`#d75a3d`,image:`raid-assets/rocket.jpg`,priceLabel:`Цена в сере`,priceField:`sulfur`,priceImage:`raid-assets/sulfur.jpg`},c4:{label:`C4`,color:`#d9a441`,image:`raid-assets/c4.jpg`,priceLabel:`Цена в сере`,priceField:`sulfur`,priceImage:`raid-assets/sulfur.jpg`},satchel:{label:`Сачели`,color:`#9f8f7a`,image:`raid-assets/satchel.jpg`,priceLabel:`Цена в сере`,priceField:`sulfur`,priceImage:`raid-assets/sulfur.jpg`},molotov:{label:`Молотовы`,color:`#f08a2f`,image:`raid-assets/molotov.png`,priceLabel:`Цена в ТНК`,priceField:`tnk`,priceImage:`raid-assets/tnk.jpg`}},Rp=N(Fp.article)`
+        `),()=>{s.current?.removeAttribute(`data-motion-pop-id`),b.contains(y)&&b.removeChild(y)}},[t]),(0,P.jsx)(Pd,{isPresent:t,childRef:s,sizeRef:c,pop:a,children:a===!1?e:M.cloneElement(e,{ref:u})})}var Id=({children:e,initial:t,isPresent:n,onExitComplete:r,custom:i,presenceAffectsLayout:a,mode:o,anchorX:s,anchorY:c,root:l})=>{let u=dr(Ld),d=(0,M.useId)(),f=!0,p=(0,M.useMemo)(()=>(f=!1,{id:d,initial:t,isPresent:n,custom:i,onExitComplete:e=>{u.set(e,!0);for(let e of u.values())if(!e)return;r&&r()},register:e=>(u.set(e,!1),()=>u.delete(e))}),[n,u,r]);return a&&f&&(p={...p}),(0,M.useMemo)(()=>{u.forEach((e,t)=>u.set(t,!1))},[n]),M.useEffect(()=>{!n&&!u.size&&r&&r()},[n]),e=(0,P.jsx)(Fd,{pop:o===`popLayout`,isPresent:n,anchorX:s,anchorY:c,root:l,children:e}),(0,P.jsx)(pr.Provider,{value:p,children:e})};function Ld(){return new Map}function Rd(e=!0){let t=(0,M.useContext)(pr);if(t===null)return[!0,null];let{isPresent:n,onExitComplete:r,register:i}=t,a=(0,M.useId)();(0,M.useEffect)(()=>{if(e)return i(a)},[e]);let o=(0,M.useCallback)(()=>e&&r&&r(a),[a,r,e]);return!n&&r?[!1,o]:[!0]}var zd=e=>e.key||``;function Bd(e){let t=[];return M.Children.forEach(e,e=>{(0,M.isValidElement)(e)&&t.push(e)}),t}var Vd=({children:e,custom:t,initial:n=!0,onExitComplete:r,presenceAffectsLayout:i=!0,mode:a=`sync`,propagate:o=!1,anchorX:s=`left`,anchorY:c=`top`,root:l})=>{let[u,d]=Rd(o),f=(0,M.useMemo)(()=>Bd(e),[e]),p=o&&!u?[]:f.map(zd),m=(0,M.useRef)(!0),h=(0,M.useRef)(f),g=dr(()=>new Map),_=(0,M.useRef)(new Set),[v,y]=(0,M.useState)(f),[b,x]=(0,M.useState)(f);fr(()=>{m.current=!1,h.current=f;for(let e=0;e<b.length;e++){let t=zd(b[e]);p.includes(t)?(g.delete(t),_.current.delete(t)):g.get(t)!==!0&&g.set(t,!1)}},[b,p.length,p.join(`-`)]);let S=[];if(f!==v){let e=[...f];for(let t=0;t<b.length;t++){let n=b[t],r=zd(n);p.includes(r)||(e.splice(t,0,n),S.push(n))}return a===`wait`&&S.length&&(e=S),x(Bd(e)),y(f),null}let{forceRender:C}=(0,M.useContext)(ur);return(0,P.jsx)(P.Fragment,{children:b.map(e=>{let v=zd(e),y=o&&!u?!1:f===b||p.includes(v);return(0,P.jsx)(Id,{isPresent:y,initial:!m.current||n?void 0:!1,custom:t,presenceAffectsLayout:i,mode:a,root:l,onExitComplete:y?void 0:()=>{if(_.current.has(v))return;if(g.has(v))_.current.add(v),g.set(v,!0);else return;let e=!0;g.forEach(t=>{t||(e=!1)}),e&&(C?.(),x(h.current),o&&d?.(),r&&r())},anchorX:s,anchorY:c,children:e},v)})})},Hd=(0,M.createContext)({strict:!1}),Ud={animation:[`animate`,`variants`,`whileHover`,`whileTap`,`exit`,`whileInView`,`whileFocus`,`whileDrag`],exit:[`exit`],drag:[`drag`,`dragControls`],focus:[`whileFocus`],hover:[`whileHover`,`onHoverStart`,`onHoverEnd`],tap:[`whileTap`,`onTap`,`onTapStart`,`onTapCancel`],pan:[`onPan`,`onPanStart`,`onPanSessionStart`,`onPanEnd`],inView:[`whileInView`,`onViewportEnter`,`onViewportLeave`],layout:[`layout`,`layoutId`]},Wd=!1;function Gd(){if(Wd)return;let e={};for(let t in Ud)e[t]={isEnabled:e=>Ud[t].some(t=>!!e[t])};nl(e),Wd=!0}function Kd(){return Gd(),rl()}function qd(e){let t=Kd();for(let n in e)t[n]={...t[n],...e[n]};nl(t)}var Jd=new Set(`animate.exit.variants.initial.style.values.variants.transition.transformTemplate.custom.inherit.onBeforeLayoutMeasure.onAnimationStart.onAnimationComplete.onUpdate.onDragStart.onDrag.onDragEnd.onMeasureDragConstraints.onDirectionLock.onDragTransitionEnd._dragX._dragY.onHoverStart.onHoverEnd.onViewportEnter.onViewportLeave.globalTapTarget.propagate.ignoreStrict.viewport`.split(`.`));function Yd(e){return e.startsWith(`while`)||e.startsWith(`drag`)&&e!==`draggable`||e.startsWith(`layout`)||e.startsWith(`onTap`)||e.startsWith(`onPan`)||e.startsWith(`onLayout`)||Jd.has(e)}var Xd=e=>!Yd(e);function Zd(e){typeof e==`function`&&(Xd=t=>t.startsWith(`on`)?!Yd(t):e(t))}try{Zd((ee(),d(S)).default)}catch{}function Qd(e,t,n){let r={};for(let i in e)i===`values`&&typeof e.values==`object`||xs(e[i])||(Xd(i)||n===!0&&Yd(i)||!t&&!Yd(i)||e.draggable&&i.startsWith(`onDrag`))&&(r[i]=e[i]);return r}var $d=(0,M.createContext)({});function ef(e,t){if(qc(e)){let{initial:t,animate:n}=e;return{initial:t===!1||Wc(t)?t:void 0,animate:Wc(n)?n:void 0}}return e.inherit===!1?{}:t}function tf(e){let{initial:t,animate:n}=ef(e,(0,M.useContext)($d));return(0,M.useMemo)(()=>({initial:t,animate:n}),[nf(t),nf(n)])}function nf(e){return Array.isArray(e)?e.join(` `):e}var rf=()=>({style:{},transform:{},transformOrigin:{},vars:{}});function af(e,t,n){for(let r in t)!xs(t[r])&&!Il(r,n)&&(e[r]=t[r])}function of({transformTemplate:e},t){return(0,M.useMemo)(()=>{let n=rf();return Al(n,t,e),Object.assign({},n.vars,n.style)},[t])}function sf(e,t){let n=e.style||{},r={};return af(r,n,e),Object.assign(r,of(e,t)),r}function cf(e,t){let n={},r=sf(e,t);return e.drag&&e.dragListener!==!1&&(n.draggable=!1,r.userSelect=r.WebkitUserSelect=r.WebkitTouchCallout=`none`,r.touchAction=e.drag===!0?`none`:`pan-${e.drag===`x`?`y`:`x`}`),e.tabIndex===void 0&&(e.onTap||e.onTapStart||e.whileTap)&&(n.tabIndex=0),n.style=r,n}var lf=()=>({...rf(),attrs:{}});function uf(e,t,n,r){let i=(0,M.useMemo)(()=>{let n=lf();return zl(n,t,Vl(r),e.transformTemplate,e.style),{...n.attrs,style:{...n.style}}},[t]);if(e.style){let t={};af(t,e.style,e),i.style={...t,...i.style}}return i}var df=[`animate`,`circle`,`defs`,`desc`,`ellipse`,`g`,`image`,`line`,`filter`,`marker`,`mask`,`metadata`,`path`,`pattern`,`polygon`,`polyline`,`rect`,`stop`,`switch`,`symbol`,`svg`,`text`,`tspan`,`use`,`view`];function ff(e){return typeof e!=`string`||e.includes(`-`)?!1:!!(df.indexOf(e)>-1||/[A-Z]/u.test(e))}function pf(e,t,n,{latestValues:r},i,a=!1,o){let s=(o??ff(e)?uf:cf)(t,r,i,e),c=Qd(t,typeof e==`string`,a),l=e===M.Fragment?{}:{...c,...s,ref:n},{children:u}=t,d=(0,M.useMemo)(()=>xs(u)?u.get():u,[u]);return(0,M.createElement)(e,{...l,children:d})}function mf({scrapeMotionValuesFromProps:e,createRenderState:t},n,r,i){return{latestValues:hf(n,r,i,e),renderState:t()}}function hf(e,t,n,r){let i={},a=r(e,{});for(let e in a)i[e]=qu(a[e]);let{initial:o,animate:s}=e,c=qc(e),l=Jc(e);t&&l&&!c&&e.inherit!==!1&&(o===void 0&&(o=t.initial),s===void 0&&(s=t.animate));let u=n?n.initial===!1:!1;u||=o===!1;let d=u?s:o;if(d&&typeof d!=`boolean`&&!Uc(d)){let t=Array.isArray(d)?d:[d];for(let n=0;n<t.length;n++){let r=ls(e,t[n]);if(r){let{transitionEnd:e,transition:t,...n}=r;for(let e in n){let t=n[e];if(Array.isArray(t)){let e=u?t.length-1:0;t=t[e]}t!==null&&(i[e]=t)}for(let t in e)i[t]=e[t]}}}return i}var gf=e=>(t,n)=>{let r=(0,M.useContext)($d),i=(0,M.useContext)(pr),a=()=>mf(e,t,r,i);return n?a():dr(a)},_f=gf({scrapeMotionValuesFromProps:Ll,createRenderState:rf}),vf=gf({scrapeMotionValuesFromProps:Ul,createRenderState:lf}),yf=Symbol.for(`motionComponentSymbol`);function bf(e,t,n){let r=(0,M.useRef)(n);(0,M.useInsertionEffect)(()=>{r.current=n});let i=(0,M.useRef)(null);return(0,M.useCallback)(n=>{n&&e.onMount?.(n),t&&(n?t.mount(n):t.unmount());let a=r.current;if(typeof a==`function`)if(n){let e=a(n);typeof e==`function`&&(i.current=e)}else i.current?(i.current(),i.current=null):a(n);else a&&(a.current=n)},[t])}var xf=(0,M.createContext)({});function Sf(e){return e&&typeof e==`object`&&Object.prototype.hasOwnProperty.call(e,`current`)}function Cf(e,t,n,r,i,a){let{visualElement:o}=(0,M.useContext)($d),s=(0,M.useContext)(Hd),c=(0,M.useContext)(pr),l=(0,M.useContext)(jd),u=l.reducedMotion,d=l.skipAnimations,f=(0,M.useRef)(null),p=(0,M.useRef)(!1);r||=s.renderer,!f.current&&r&&(f.current=r(e,{visualState:t,parent:o,props:n,presenceContext:c,blockInitialAnimation:c?c.initial===!1:!1,reducedMotionConfig:u,skipAnimations:d,isSVG:a}),p.current&&f.current&&(f.current.manuallyAnimateOnMount=!0));let m=f.current,h=(0,M.useContext)(xf);m&&!m.projection&&i&&(m.type===`html`||m.type===`svg`)&&wf(f.current,n,i,h);let g=(0,M.useRef)(!1);(0,M.useInsertionEffect)(()=>{m&&g.current&&m.update(n,c)});let _=n[Ts],v=(0,M.useRef)(!!_&&typeof window<`u`&&!window.MotionHandoffIsComplete?.(_)&&window.MotionHasOptimisedAnimation?.(_));return fr(()=>{p.current=!0,m&&(g.current=!0,window.MotionIsMounted=!0,m.updateFeatures(),m.scheduleRenderMicrotask(),v.current&&m.animationState&&m.animationState.animateChanges())}),(0,M.useEffect)(()=>{m&&(!v.current&&m.animationState&&m.animationState.animateChanges(),v.current&&=(queueMicrotask(()=>{window.MotionHandoffMarkAsComplete?.(_)}),!1),m.enteringChildren=void 0)}),m}function wf(e,t,n,r){let{layoutId:i,layout:a,drag:o,dragConstraints:s,layoutScroll:c,layoutRoot:l,layoutAnchor:u,layoutCrossfade:d}=t;e.projection=new n(e.latestValues,t[`data-framer-portal-id`]?void 0:Tf(e.parent)),e.projection.setOptions({layoutId:i,layout:a,alwaysMeasureLayout:!!o||s&&Sf(s),visualElement:e,animationType:typeof a==`string`?a:`both`,initialPromotionConfig:r,crossfade:d,layoutScroll:c,layoutRoot:l,layoutAnchor:u})}function Tf(e){if(e)return e.options.allowProjection===!1?Tf(e.parent):e.projection}function Ef(e,{forwardMotionProps:t=!1,type:n}={},r,i){r&&qd(r);let a=n?n===`svg`:ff(e),o=a?vf:_f;function s(n,s){let c,l={...(0,M.useContext)(jd),...n,layoutId:Df(n)},{isStatic:u}=l,d=tf(n),f=o(n,u);if(!u&&typeof window<`u`){Of(l,r);let t=kf(l);c=t.MeasureLayout,d.visualElement=Cf(e,f,l,i,t.ProjectionNode,a)}return(0,P.jsxs)($d.Provider,{value:d,children:[c&&d.visualElement?(0,P.jsx)(c,{visualElement:d.visualElement,...l}):null,pf(e,n,bf(f,d.visualElement,s),f,u,t,a)]})}s.displayName=`motion.${typeof e==`string`?e:`create(${e.displayName??e.name??``})`}`;let c=(0,M.forwardRef)(s);return c[yf]=e,c}function Df({layoutId:e}){let t=(0,M.useContext)(ur).id;return t&&e!==void 0?t+`-`+e:e}function Of(e,t){(0,M.useContext)(Hd).strict}function kf(e){let{drag:t,layout:n}=Kd();if(!t&&!n)return{};let r={...t,...n};return{MeasureLayout:t?.isEnabled(e)||n?.isEnabled(e)?r.MeasureLayout:void 0,ProjectionNode:r.ProjectionNode}}function Af(e,t){if(typeof Proxy>`u`)return Ef;let n=new Map,r=(n,r)=>Ef(n,r,e,t);return new Proxy((e,t)=>r(e,t),{get:(i,a)=>a===`create`?r:(n.has(a)||n.set(a,Ef(a,void 0,e,t)),n.get(a))})}var jf=(e,t)=>t.isSVG??ff(e)?new Wl(t):new K(t,{allowProjection:e!==M.Fragment}),Mf=class extends ol{constructor(e){super(e),e.animationState||=Zl(e)}updateAnimationControlsSubscription(){let{animate:e}=this.node.getProps();Uc(e)&&(this.unmountControls=e.subscribe(this.node))}mount(){this.updateAnimationControlsSubscription()}update(){let{animate:e}=this.node.getProps(),{animate:t}=this.node.prevProps||{};e!==t&&this.updateAnimationControlsSubscription()}unmount(){this.node.animationState.reset(),this.unmountControls?.()}},Nf=0,Pf={animation:{Feature:Mf},exit:{Feature:class extends ol{constructor(){super(...arguments),this.id=Nf++,this.isExitComplete=!1}update(){if(!this.node.presenceContext)return;let{isPresent:e,onExitComplete:t}=this.node.presenceContext,{isPresent:n}=this.node.prevPresenceContext||{};if(!this.node.animationState||e===n)return;if(e&&n===!1){if(this.isExitComplete){let{initial:e,custom:t}=this.node.getProps();if(typeof e==`string`||typeof e==`object`&&e&&!Array.isArray(e)){let n=us(this.node,e,t);if(n){let{transition:e,transitionEnd:t,...r}=n;for(let e in r)this.node.getValue(e)?.jump(r[e])}}this.node.animationState.reset(),this.node.animationState.animateChanges()}else this.node.animationState.setActive(`exit`,!1);this.isExitComplete=!1;return}let r=this.node.animationState.setActive(`exit`,!e);t&&!e&&r.then(()=>{this.isExitComplete=!0,t(this.id)})}mount(){let{register:e,onExitComplete:t}=this.node.presenceContext||{};t&&t(this.id),e&&(this.unmount=e(this.id))}unmount(){}}}};function Ff(e){return{point:{x:e.pageX,y:e.pageY}}}var If=e=>t=>lc(t)&&e(t,Ff(t));function Lf(e,t,n,r){return Wu(e,t,If(n),r)}var Rf=({current:e})=>e?e.ownerDocument.defaultView:null,zf=(e,t)=>Math.abs(e-t);function Bf(e,t){let n=zf(e.x,t.x),r=zf(e.y,t.y);return Math.sqrt(n**2+r**2)}var Vf=new Set([`auto`,`scroll`]),Hf=class{constructor(e,t,{transformPagePoint:n,contextWindow:r=window,dragSnapToOrigin:i=!1,distanceThreshold:a=3,element:o}={}){if(this.startEvent=null,this.lastMoveEvent=null,this.lastMoveEventInfo=null,this.lastRawMoveEventInfo=null,this.handlers={},this.contextWindow=window,this.scrollPositions=new Map,this.removeScrollListeners=null,this.onElementScroll=e=>{this.handleScroll(e.target)},this.onWindowScroll=()=>{this.handleScroll(window)},this.updatePoint=()=>{if(!(this.lastMoveEvent&&this.lastMoveEventInfo))return;this.lastRawMoveEventInfo&&(this.lastMoveEventInfo=Uf(this.lastRawMoveEventInfo,this.transformPagePoint));let e=Gf(this.lastMoveEventInfo,this.history),t=this.startEvent!==null,n=Bf(e.offset,{x:0,y:0})>=this.distanceThreshold;if(!t&&!n)return;let{point:r}=e,{timestamp:i}=ni;this.history.push({...r,timestamp:i});let{onStart:a,onMove:o}=this.handlers;t||(a&&a(this.lastMoveEvent,e),this.startEvent=this.lastMoveEvent),o&&o(this.lastMoveEvent,e)},this.handlePointerMove=(e,t)=>{this.lastMoveEvent=e,this.lastRawMoveEventInfo=t,this.lastMoveEventInfo=Uf(t,this.transformPagePoint),I.update(this.updatePoint,!0)},this.handlePointerUp=(e,t)=>{this.end();let{onEnd:n,onSessionEnd:r,resumeAnimation:i}=this.handlers;if((this.dragSnapToOrigin||!this.startEvent)&&i&&i(),!(this.lastMoveEvent&&this.lastMoveEventInfo))return;let a=Gf(e.type===`pointercancel`?this.lastMoveEventInfo:Uf(t,this.transformPagePoint),this.history);this.startEvent&&n&&n(e,a),r&&r(e,a)},!lc(e))return;this.dragSnapToOrigin=i,this.handlers=t,this.transformPagePoint=n,this.distanceThreshold=a,this.contextWindow=r||window;let s=Uf(Ff(e),this.transformPagePoint),{point:c}=s,{timestamp:l}=ni;this.history=[{...c,timestamp:l}];let{onSessionStart:u}=t;u&&u(e,Gf(s,this.history)),this.removeListeners=Cr(Lf(this.contextWindow,`pointermove`,this.handlePointerMove),Lf(this.contextWindow,`pointerup`,this.handlePointerUp),Lf(this.contextWindow,`pointercancel`,this.handlePointerUp)),o&&this.startScrollTracking(o)}startScrollTracking(e){let t=e.parentElement;for(;t;){let e=getComputedStyle(t);(Vf.has(e.overflowX)||Vf.has(e.overflowY))&&this.scrollPositions.set(t,{x:t.scrollLeft,y:t.scrollTop}),t=t.parentElement}this.scrollPositions.set(window,{x:window.scrollX,y:window.scrollY}),window.addEventListener(`scroll`,this.onElementScroll,{capture:!0}),window.addEventListener(`scroll`,this.onWindowScroll),this.removeScrollListeners=()=>{window.removeEventListener(`scroll`,this.onElementScroll,{capture:!0}),window.removeEventListener(`scroll`,this.onWindowScroll)}}handleScroll(e){let t=this.scrollPositions.get(e);if(!t)return;let n=e===window,r=n?{x:window.scrollX,y:window.scrollY}:{x:e.scrollLeft,y:e.scrollTop},i={x:r.x-t.x,y:r.y-t.y};i.x===0&&i.y===0||(n?this.lastMoveEventInfo&&(this.lastMoveEventInfo.point.x+=i.x,this.lastMoveEventInfo.point.y+=i.y):this.history.length>0&&(this.history[0].x-=i.x,this.history[0].y-=i.y),this.scrollPositions.set(e,r),I.update(this.updatePoint,!0))}updateHandlers(e){this.handlers=e}end(){this.removeListeners&&this.removeListeners(),this.removeScrollListeners&&this.removeScrollListeners(),this.scrollPositions.clear(),ti(this.updatePoint)}};function Uf(e,t){return t?{point:t(e.point)}:e}function Wf(e,t){return{x:e.x-t.x,y:e.y-t.y}}function Gf({point:e},t){return{point:e,delta:Wf(e,qf(t)),offset:Wf(e,Kf(t)),velocity:Jf(t,.1)}}function Kf(e){return e[0]}function qf(e){return e[e.length-1]}function Jf(e,t){if(e.length<2)return{x:0,y:0};let n=e.length-1,r=null,i=qf(e);for(;n>=0&&(r=e[n],!(i.timestamp-r.timestamp>F(t)));)n--;if(!r)return{x:0,y:0};r===e[0]&&e.length>2&&i.timestamp-r.timestamp>F(t)*2&&(r=e[1]);let a=Er(i.timestamp-r.timestamp);if(a===0)return{x:0,y:0};let o={x:(i.x-r.x)/a,y:(i.y-r.y)/a};return o.x===1/0&&(o.x=0),o.y===1/0&&(o.y=0),o}function Yf(e,{min:t,max:n},r){return t!==void 0&&e<t?e=r?B(t,e,r.min):Math.max(e,t):n!==void 0&&e>n&&(e=r?B(n,e,r.max):Math.min(e,n)),e}function Xf(e,t,n){return{min:t===void 0?void 0:e.min+t,max:n===void 0?void 0:e.max+n-(e.max-e.min)}}function Zf(e,{top:t,left:n,bottom:r,right:i}){return{x:Xf(e.x,n,i),y:Xf(e.y,t,r)}}function Qf(e,t){let n=t.min-e.min,r=t.max-e.max;return t.max-t.min<e.max-e.min&&([n,r]=[r,n]),{min:n,max:r}}function $f(e,t){return{x:Qf(e.x,t.x),y:Qf(e.y,t.y)}}function ep(e,t){let n=.5,r=uu(e),i=uu(t);return i>r?n=wr(t.min,t.max-r,e.min):r>i&&(n=wr(e.min,e.max-i,t.min)),gr(0,1,n)}function tp(e,t){let n={};return t.min!==void 0&&(n.min=t.min-e.min),t.max!==void 0&&(n.max=t.max-e.min),n}var np=.35;function rp(e=np){return e===!1?e=0:e===!0&&(e=np),{x:ip(e,`left`,`right`),y:ip(e,`top`,`bottom`)}}function ip(e,t,n){return{min:ap(e,t),max:ap(e,n)}}function ap(e,t){return typeof e==`number`?e:e[t]||0}var op=new WeakMap,sp=class{constructor(e){this.openDragLock=null,this.isDragging=!1,this.currentDirection=null,this.originPoint={x:0,y:0},this.constraints=!1,this.hasMutatedConstraints=!1,this.elastic=Vc(),this.latestPointerEvent=null,this.latestPanInfo=null,this.visualElement=e}start(e,{snapToCursor:t=!1,distanceThreshold:n}={}){let{presenceContext:r}=this.visualElement;if(r&&r.isPresent===!1)return;let i=e=>{t&&this.snapToCursor(Ff(e).point),this.stopAnimation()},a=(e,t)=>{let{drag:n,dragPropagation:r,onDragStart:i}=this.getProps();if(n&&!r&&(this.openDragLock&&this.openDragLock(),this.openDragLock=ic(n),!this.openDragLock))return;this.latestPointerEvent=e,this.latestPanInfo=t,this.isDragging=!0,this.currentDirection=null,this.resolveConstraints(),this.visualElement.projection&&(this.visualElement.projection.isAnimationBlocked=!0,this.visualElement.projection.target=void 0),Mu(e=>{let t=this.getAxisMotionValue(e).get()||0;if(Ai.test(t)){let{projection:n}=this.visualElement;if(n&&n.layout){let r=n.layout.layoutBox[e];r&&(t=uu(r)*(parseFloat(t)/100))}}this.originPoint[e]=t}),i&&I.update(()=>i(e,t),!1,!0),Cs(this.visualElement,`transform`);let{animationState:a}=this.visualElement;a&&a.setActive(`whileDrag`,!0)},o=(e,t)=>{this.latestPointerEvent=e,this.latestPanInfo=t;let{dragPropagation:n,dragDirectionLock:r,onDirectionLock:i,onDrag:a}=this.getProps();if(!n&&!this.openDragLock)return;let{offset:o}=t;if(r&&this.currentDirection===null){this.currentDirection=dp(o),this.currentDirection!==null&&i&&i(this.currentDirection);return}this.updateAxis(`x`,t.point,o),this.updateAxis(`y`,t.point,o),this.visualElement.render(),a&&I.update(()=>a(e,t),!1,!0)},s=(e,t)=>{this.latestPointerEvent=e,this.latestPanInfo=t,this.stop(e,t),this.latestPointerEvent=null,this.latestPanInfo=null},c=()=>{let{dragSnapToOrigin:e}=this.getProps();(e||this.constraints)&&this.startAnimation({x:0,y:0})},{dragSnapToOrigin:l}=this.getProps();this.panSession=new Hf(e,{onSessionStart:i,onStart:a,onMove:o,onSessionEnd:s,resumeAnimation:c},{transformPagePoint:this.visualElement.getTransformPagePoint(),dragSnapToOrigin:l,distanceThreshold:n,contextWindow:Rf(this.visualElement),element:this.visualElement.current})}stop(e,t){let n=e||this.latestPointerEvent,r=t||this.latestPanInfo,i=this.isDragging;if(this.cancel(),!i||!r||!n)return;let{velocity:a}=r;this.startAnimation(a);let{onDragEnd:o}=this.getProps();o&&I.postRender(()=>o(n,r))}cancel(){this.isDragging=!1;let{projection:e,animationState:t}=this.visualElement;e&&(e.isAnimationBlocked=!1),this.endPanSession();let{dragPropagation:n}=this.getProps();!n&&this.openDragLock&&(this.openDragLock(),this.openDragLock=null),t&&t.setActive(`whileDrag`,!1)}endPanSession(){this.panSession&&this.panSession.end(),this.panSession=void 0}updateAxis(e,t,n){let{drag:r}=this.getProps();if(!n||!up(e,r,this.currentDirection))return;let i=this.getAxisMotionValue(e),a=this.originPoint[e]+n[e];this.constraints&&this.constraints[e]&&(a=Yf(a,this.constraints[e],this.elastic[e])),i.set(a)}resolveConstraints(){let{dragConstraints:e,dragElastic:t}=this.getProps(),n=this.visualElement.projection&&!this.visualElement.projection.layout?this.visualElement.projection.measure(!1):this.visualElement.projection?.layout,r=this.constraints;e&&Sf(e)?this.constraints||=this.resolveRefConstraints():e&&n?this.constraints=Zf(n.layoutBox,e):this.constraints=!1,this.elastic=rp(t),r!==this.constraints&&!Sf(e)&&n&&this.constraints&&!this.hasMutatedConstraints&&Mu(e=>{this.constraints!==!1&&this.getAxisMotionValue(e)&&(this.constraints[e]=tp(n.layoutBox[e],this.constraints[e]))})}resolveRefConstraints(){let{dragConstraints:e,onMeasureDragConstraints:t}=this.getProps();if(!e||!Sf(e))return!1;let n=e.current,{projection:r}=this.visualElement;if(!r||!r.layout)return!1;r.root&&(r.root.scroll=void 0,r.root.updateScroll());let i=El(n,r.root,this.visualElement.getTransformPagePoint()),a=$f(r.layout.layoutBox,i);if(t){let e=t(G(a));this.hasMutatedConstraints=!!e,e&&(a=sl(e))}return a}startAnimation(e){let{drag:t,dragMomentum:n,dragElastic:r,dragTransition:i,dragSnapToOrigin:a,onDragTransitionEnd:o}=this.getProps(),s=this.constraints||{},c=Mu(o=>{if(!up(o,t,this.currentDirection))return;let c=s&&s[o]||{};(a===!0||a===o)&&(c={min:0,max:0});let l=r?200:1e6,u=r?40:1e7,d={type:`inertia`,velocity:n?e[o]:0,bounceStiffness:l,bounceDamping:u,timeConstant:750,restDelta:1,restSpeed:10,...i,...c};return this.startAxisValueAnimation(o,d)});return Promise.all(c).then(o)}startAxisValueAnimation(e,t){let n=this.getAxisMotionValue(e);return Cs(this.visualElement,e),n.start(ss(e,n,0,t,this.visualElement,!1))}stopAnimation(){Mu(e=>this.getAxisMotionValue(e).stop())}getAxisMotionValue(e){let t=`_drag${e.toUpperCase()}`;return this.visualElement.getProps()[t]||this.visualElement.getValue(e,this.visualElement.latestValues[e]??0)}snapToCursor(e){Mu(t=>{let{drag:n}=this.getProps();if(!up(t,n,this.currentDirection))return;let{projection:r}=this.visualElement,i=this.getAxisMotionValue(t);if(r&&r.layout){let{min:n,max:a}=r.layout.layoutBox[t],o=i.get()||0;i.set(e[t]-B(n,a,.5)+o)}})}scalePositionWithinConstraints(){if(!this.visualElement.current)return;let{drag:e,dragConstraints:t}=this.getProps(),{projection:n}=this.visualElement;if(!Sf(t)||!n||!this.constraints)return;this.stopAnimation();let r={x:0,y:0};Mu(e=>{let t=this.getAxisMotionValue(e);if(t&&this.constraints!==!1){let n=t.get();r[e]=ep({min:n,max:n},this.constraints[e])}});let{transformTemplate:i}=this.visualElement.getProps();this.visualElement.current.style.transform=i?i({},``):`none`,n.root&&n.root.updateScroll(),n.updateLayout(),this.constraints=!1,this.resolveConstraints(),Mu(t=>{if(!up(t,e,null))return;let n=this.getAxisMotionValue(t),{min:i,max:a}=this.constraints[t];n.set(B(i,a,r[t]))}),this.visualElement.render()}addListeners(){if(!this.visualElement.current)return;op.set(this.visualElement,this);let e=this.visualElement.current,t=Lf(e,`pointerdown`,t=>{let{drag:n,dragListener:r=!0}=this.getProps(),i=t.target,a=i!==e&&pc(i);n&&r&&!a&&this.start(t)}),n,r=()=>{let{dragConstraints:t}=this.getProps();Sf(t)&&t.current&&(this.constraints=this.resolveRefConstraints(),n||=lp(e,t.current,()=>this.scalePositionWithinConstraints()))},{projection:i}=this.visualElement,a=i.addEventListener(`measure`,r);i&&!i.layout&&(i.root&&i.root.updateScroll(),i.updateLayout()),I.read(r);let o=Wu(window,`resize`,()=>this.scalePositionWithinConstraints()),s=i.addEventListener(`didUpdate`,(({delta:e,hasLayoutChanged:t})=>{this.isDragging&&t&&(Mu(t=>{let n=this.getAxisMotionValue(t);n&&(this.originPoint[t]+=e[t].translate,n.set(n.get()+e[t].translate))}),this.visualElement.render())}));return()=>{o(),t(),a(),s&&s(),n&&n()}}getProps(){let e=this.visualElement.getProps(),{drag:t=!1,dragDirectionLock:n=!1,dragPropagation:r=!1,dragConstraints:i=!1,dragElastic:a=np,dragMomentum:o=!0}=e;return{...e,drag:t,dragDirectionLock:n,dragPropagation:r,dragConstraints:i,dragElastic:a,dragMomentum:o}}};function cp(e){let t=!0;return()=>{if(t){t=!1;return}e()}}function lp(e,t,n){let r=Fc(e,cp(n)),i=Fc(t,cp(n));return()=>{r(),i()}}function up(e,t,n){return(t===!0||t===e)&&(n===null||n===e)}function dp(e,t=10){let n=null;return Math.abs(e.y)>t?n=`y`:Math.abs(e.x)>t&&(n=`x`),n}var fp=class extends ol{constructor(e){super(e),this.removeGroupControls=Sr,this.removeListeners=Sr,this.controls=new sp(e)}mount(){let{dragControls:e}=this.node.getProps();e&&(this.removeGroupControls=e.subscribe(this.controls)),this.removeListeners=this.controls.addListeners()||Sr}update(){let{dragControls:e}=this.node.getProps(),{dragControls:t}=this.node.prevProps||{};e!==t&&(this.removeGroupControls(),e&&(this.removeGroupControls=e.subscribe(this.controls)))}unmount(){this.removeGroupControls(),this.removeListeners(),this.controls.isDragging||this.controls.endPanSession()}},pp=e=>(t,n)=>{e&&I.update(()=>e(t,n),!1,!0)},mp=class extends ol{constructor(){super(...arguments),this.removePointerDownListener=Sr}onPointerDown(e){this.session=new Hf(e,this.createPanHandlers(),{transformPagePoint:this.node.getTransformPagePoint(),contextWindow:Rf(this.node)})}createPanHandlers(){let{onPanSessionStart:e,onPanStart:t,onPan:n,onPanEnd:r}=this.node.getProps();return{onSessionStart:pp(e),onStart:pp(t),onMove:pp(n),onEnd:(e,t)=>{delete this.session,r&&I.postRender(()=>r(e,t))}}}mount(){this.removePointerDownListener=Lf(this.node.current,`pointerdown`,e=>this.onPointerDown(e))}update(){this.session&&this.session.updateHandlers(this.createPanHandlers())}unmount(){this.removePointerDownListener(),this.session&&this.session.end()}},hp=!1,gp=class extends M.Component{componentDidMount(){let{visualElement:e,layoutGroup:t,switchLayoutGroup:n,layoutId:r}=this.props,{projection:i}=e;i&&(t.group&&t.group.add(i),n&&n.register&&r&&n.register(i),hp&&i.root.didUpdate(),i.addEventListener(`animationComplete`,()=>{this.safeToRemove()}),i.setOptions({...i.options,layoutDependency:this.props.layoutDependency,onExitComplete:()=>this.safeToRemove()})),Yu.hasEverUpdated=!0}getSnapshotBeforeUpdate(e){let{layoutDependency:t,visualElement:n,drag:r,isPresent:i}=this.props,{projection:a}=n;return a?(a.isPresent=i,e.layoutDependency!==t&&a.setOptions({...a.options,layoutDependency:t}),hp=!0,r||e.layoutDependency!==t||t===void 0||e.isPresent!==i?a.willUpdate():this.safeToRemove(),e.isPresent!==i&&(i?a.promote():a.relegate()||I.postRender(()=>{let e=a.getStack();(!e||!e.members.length)&&this.safeToRemove()})),null):null}componentDidUpdate(){let{visualElement:e,layoutAnchor:t}=this.props,{projection:n}=e;n&&(n.options.layoutAnchor=t,n.root.didUpdate(),ec.postRender(()=>{!n.currentAnimation&&n.isLead()&&this.safeToRemove()}))}componentWillUnmount(){let{visualElement:e,layoutGroup:t,switchLayoutGroup:n}=this.props,{projection:r}=e;hp=!0,r&&(r.scheduleCheckAfterUnmount(),t&&t.group&&t.group.remove(r),n&&n.deregister&&n.deregister(r))}safeToRemove(){let{safeToRemove:e}=this.props;e&&e()}render(){return null}};function _p(e){let[t,n]=Rd(),r=(0,M.useContext)(ur);return(0,P.jsx)(gp,{...e,layoutGroup:r,switchLayoutGroup:(0,M.useContext)(xf),isPresent:t,safeToRemove:n})}var vp={pan:{Feature:mp},drag:{Feature:fp,ProjectionNode:Ad,MeasureLayout:_p}};function yp(e,t,n){let{props:r}=e;e.animationState&&r.whileHover&&e.animationState.setActive(`whileHover`,n===`Start`);let i=r[`onHover`+n];i&&I.postRender(()=>i(t,Ff(t)))}var bp=class extends ol{mount(){let{current:e}=this.node;e&&(this.unmount=sc(e,(e,t)=>(yp(this.node,t,`Start`),e=>yp(this.node,e,`End`))))}unmount(){}},xp=class extends ol{constructor(){super(...arguments),this.isActive=!1}onFocus(){let e=!1;try{e=this.node.current.matches(`:focus-visible`)}catch{e=!0}!e||!this.node.animationState||(this.node.animationState.setActive(`whileFocus`,!0),this.isActive=!0)}onBlur(){!this.isActive||!this.node.animationState||(this.node.animationState.setActive(`whileFocus`,!1),this.isActive=!1)}mount(){this.unmount=Cr(Wu(this.node.current,`focus`,()=>this.onFocus()),Wu(this.node.current,`blur`,()=>this.onBlur()))}unmount(){}};function Sp(e,t,n){let{props:r}=e;if(e.current instanceof HTMLButtonElement&&e.current.disabled)return;e.animationState&&r.whileTap&&e.animationState.setActive(`whileTap`,n===`Start`);let i=r[`onTap`+(n===`End`?``:n)];i&&I.postRender(()=>i(t,Ff(t)))}var Cp=class extends ol{mount(){let{current:e}=this.node;if(!e)return;let{globalTapTarget:t,propagate:n}=this.node.props;this.unmount=bc(e,(e,t)=>(Sp(this.node,t,`Start`),(e,{success:t})=>Sp(this.node,e,t?`End`:`Cancel`)),{useGlobalTarget:t,stopPropagation:n?.tap===!1})}unmount(){}},wp=new WeakMap,Tp=new WeakMap,Ep=e=>{let t=wp.get(e.target);t&&t(e)},Dp=e=>{e.forEach(Ep)};function Op({root:e,...t}){let n=e||document;Tp.has(n)||Tp.set(n,{});let r=Tp.get(n),i=JSON.stringify(t);return r[i]||(r[i]=new IntersectionObserver(Dp,{root:e,...t})),r[i]}function kp(e,t,n){let r=Op(t);return wp.set(e,n),r.observe(e),()=>{wp.delete(e),r.unobserve(e)}}var Ap={some:0,all:1},jp=class extends ol{constructor(){super(...arguments),this.hasEnteredView=!1,this.isInView=!1}startObserver(){this.stopObserver?.();let{viewport:e={}}=this.node.getProps(),{root:t,margin:n,amount:r=`some`,once:i}=e,a={root:t?t.current:void 0,rootMargin:n,threshold:typeof r==`number`?r:Ap[r]},o=e=>{let{isIntersecting:t}=e;if(this.isInView===t||(this.isInView=t,i&&!t&&this.hasEnteredView))return;t&&(this.hasEnteredView=!0),this.node.animationState&&this.node.animationState.setActive(`whileInView`,t);let{onViewportEnter:n,onViewportLeave:r}=this.node.getProps(),a=t?n:r;a&&a(e)};this.stopObserver=kp(this.node.current,a,o)}mount(){this.startObserver()}update(){if(typeof IntersectionObserver>`u`)return;let{props:e,prevProps:t}=this.node;[`amount`,`margin`,`root`].some(Mp(e,t))&&this.startObserver()}unmount(){this.stopObserver?.(),this.hasEnteredView=!1,this.isInView=!1}};function Mp({viewport:e={}},{viewport:t={}}={}){return n=>e[n]!==t[n]}var Np={inView:{Feature:jp},tap:{Feature:Cp},focus:{Feature:xp},hover:{Feature:bp}},Pp={layout:{ProjectionNode:Ad,MeasureLayout:_p}},Fp=Af({...Pf,...Np,...vp,...Pp},jf),Ip={sulfur:{label:`Сера`,image:`raid-assets/sulfur.jpg`},charcoal:{label:`Уголь`},metalFragments:{label:`Металл фрагменты`},lowGradeFuel:{label:`ТНК`,image:`raid-assets/tnk.jpg`},cloth:{label:`Ткань`},techTrash:{label:`Микросхемы`},metalPipes:{label:`Трубы`},rope:{label:`Верёвка`}},Lp=[{id:`rockets`,label:`Ракета`,image:`raid-assets/rocket.jpg`,workbench:`Верстак 3`,directIngredients:[{label:`Взрывчатка`,amount:10},{label:`Порох`,amount:150},{label:`Металлическая труба`,amount:2}],rawMaterials:{sulfur:1400,charcoal:1950,metalFragments:100,lowGradeFuel:30,metalPipes:2}},{id:`c4`,label:`C4`,image:`raid-assets/c4.jpg`,workbench:`Верстак 3`,directIngredients:[{label:`Взрывчатка`,amount:20},{label:`Ткань`,amount:5},{label:`Микросхемы`,amount:2}],rawMaterials:{sulfur:2200,charcoal:3e3,metalFragments:200,lowGradeFuel:60,cloth:5,techTrash:2}},{id:`satchel`,label:`Сачель`,image:`raid-assets/satchel.jpg`,workbench:`Верстак 1`,directIngredients:[{label:`Бобовая граната`,amount:4},{label:`Маленький тайник`,amount:1},{label:`Верёвка`,amount:1}],rawMaterials:{sulfur:480,charcoal:720,metalFragments:80,cloth:10,rope:1}},{id:`molotov`,label:`Молотов`,image:`raid-assets/molotov.png`,workbench:`Верстак 2`,directIngredients:[{label:`ТНК`,amount:50},{label:`Ткань`,amount:10}],rawMaterials:{lowGradeFuel:50,cloth:10}}],Rp=N.section`
+  width: min(100%, 860px);
+  margin: 24px auto 0;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(22, 20, 18, 0.78);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.32);
+  text-align: left;
+  backdrop-filter: blur(16px);
+`,zp=N.div`
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 16px;
+
+  @media (max-width: 620px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+`,Bp=N.div`
+  display: flex;
+  align-items: end;
+  gap: 10px;
+
+  @media (max-width: 620px) {
+    align-items: stretch;
+    flex-direction: column;
+  }
+`,Vp=N.div`
+  min-width: 0;
+`,Hp=N.p`
+  margin: 0 0 6px;
+  color: #d6a15a;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+`,Up=N.h2`
+  margin: 0;
+  color: #fff5e6;
+  font-size: clamp(1.45rem, 4vw, 2rem);
+`,Wp=N.label`
+  display: grid;
+  gap: 7px;
+  color: #cdbfab;
+  font-size: 0.88rem;
+  font-weight: 800;
+`,Gp=N.input`
+  width: 112px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  color: #fff4e5;
+  background: rgba(0, 0, 0, 0.24);
+  font-weight: 900;
+
+  @media (max-width: 620px) {
+    width: 100%;
+  }
+`,Kp=N.div`
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+
+  @media (max-width: 860px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 520px) {
+    grid-template-columns: 1fr;
+  }
+`,qp=N(Fp.button)`
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  min-height: 142px;
+  padding: 12px;
+  border: 1px solid ${({$active:e})=>e?`#d66a3e`:`rgba(255, 255, 255, 0.08)`};
+  border-radius: 8px;
+  color: ${({$active:e})=>e?`#fff6e8`:`#d9cabb`};
+  background: ${({$active:e})=>e?`linear-gradient(135deg, rgba(193, 76, 42, 0.95), rgba(108, 55, 32, 0.9))`:`rgba(255, 255, 255, 0.045)`};
+  cursor: pointer;
+  font-weight: 900;
+`,Jp=N.span`
+  display: grid;
+  width: 74px;
+  height: 74px;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f2eadf;
+`,Yp=N.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+`,Xp=N.span`
+  color: #f1c47d;
+  font-size: 0.78rem;
+`,Zp=N.button`
+  align-self: end;
+  padding: 11px 14px;
+  border-radius: 8px;
+  color: #16110d;
+  background: #f1c47d;
+  cursor: pointer;
+  font-weight: 900;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+
+  &:hover {
+    background: #ffd48d;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 620px) {
+    width: 100%;
+  }
+`,Qp=N.div`
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 14px;
+  margin-top: 16px;
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
+`,$p=N(Qp)`
+  grid-template-columns: 1fr 1.25fr;
+`,em=N.div`
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+`,tm=N.h3`
+  margin: 0 0 12px;
+  color: #fff4e5;
+  font-size: 1rem;
+`,nm=N.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  color: #d8c9b8;
+
+  &:first-of-type {
+    border-top: 0;
+  }
+`,rm=N(nm)`
+  align-items: center;
+`,im=N.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+`,am=N.img`
+  width: 34px;
+  height: 34px;
+  border-radius: 7px;
+  object-fit: contain;
+  background: #f2eadf;
+`,om=N.button`
+  padding: 7px 9px;
+  border-radius: 8px;
+  color: #f2c8b8;
+  background: rgba(215, 90, 61, 0.14);
+  cursor: pointer;
+  font-weight: 900;
+
+  &:hover {
+    background: rgba(215, 90, 61, 0.24);
+  }
+`,sm=N.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+`,cm=N.img`
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  object-fit: contain;
+  background: #f2eadf;
+`,lm=N.strong`
+  color: #fff1dc;
+  white-space: nowrap;
+`;function um(e){return`/rusthelper/${e}`}function dm(e,t){return Object.entries(e.rawMaterials).map(([e,n])=>({key:e,amount:n*t,...Ip[e]}))}function fm(e){let t=e.reduce((e,t)=>(Object.entries(t.item.rawMaterials).forEach(([n,r])=>{e[n]=(e[n]??0)+r*t.amount}),e),{});return Object.entries(t).map(([e,t])=>({key:e,amount:t,...Ip[e]}))}function pm(){let[e,t]=(0,M.useState)(Lp[0].id),[n,r]=(0,M.useState)(1),[i,a]=(0,M.useState)([]),o=Lp.find(t=>t.id===e)??Lp[0],s=Math.max(1,Number(n)||1),c=(0,M.useMemo)(()=>dm(o,s),[o,s]),l=(0,M.useMemo)(()=>fm(i),[i]);function u(){a(t=>t.find(t=>t.id===e)?t.map(t=>t.id===e?{...t,amount:t.amount+s}:t):[...t,{id:e,item:o,amount:s}])}function d(e){a(t=>t.filter(t=>t.id!==e))}return(0,P.jsxs)(Rp,{children:[(0,P.jsxs)(zp,{children:[(0,P.jsxs)(Vp,{children:[(0,P.jsx)(Hp,{children:`Craft system`}),(0,P.jsx)(Up,{children:`Крафт взрывчатки`})]}),(0,P.jsxs)(Bp,{children:[(0,P.jsxs)(Wp,{children:[`Сколько штук`,(0,P.jsx)(Gp,{min:`1`,type:`number`,value:n,onChange:e=>r(e.target.value)})]}),(0,P.jsx)(Zp,{type:`button`,onClick:u,children:`Добавить`})]})]}),(0,P.jsx)(Kp,{children:Lp.map(n=>(0,P.jsxs)(qp,{$active:e===n.id,type:`button`,whileHover:{y:-3},whileTap:{scale:.98},onClick:()=>t(n.id),children:[(0,P.jsx)(Jp,{children:(0,P.jsx)(Yp,{src:um(n.image),alt:``})}),n.label,(0,P.jsx)(Xp,{children:n.workbench})]},n.id))}),(0,P.jsxs)(Qp,{children:[(0,P.jsxs)(em,{children:[(0,P.jsxs)(tm,{children:[`Рецепт на `,s,` шт.`]}),o.directIngredients.map(e=>(0,P.jsxs)(nm,{children:[(0,P.jsx)(`span`,{children:e.label}),(0,P.jsxs)(lm,{children:[`x`,e.amount*s]})]},e.label))]}),(0,P.jsxs)(em,{children:[(0,P.jsx)(tm,{children:`Сырьё с нуля`}),c.map(e=>(0,P.jsxs)(nm,{children:[(0,P.jsxs)(sm,{children:[e.image&&(0,P.jsx)(cm,{src:um(e.image),alt:``}),e.label]}),(0,P.jsxs)(lm,{children:[`x`,e.amount.toLocaleString(`ru-RU`)]})]},e.key))]})]}),(0,P.jsxs)($p,{children:[(0,P.jsxs)(em,{children:[(0,P.jsx)(tm,{children:`Список крафта`}),i.length===0?(0,P.jsxs)(nm,{children:[(0,P.jsx)(`span`,{children:`Добавь предметы выше`}),(0,P.jsx)(lm,{children:`x0`})]}):i.map(e=>(0,P.jsxs)(rm,{children:[(0,P.jsxs)(im,{children:[(0,P.jsx)(am,{src:um(e.item.image),alt:``}),e.item.label]}),(0,P.jsxs)(im,{children:[(0,P.jsxs)(lm,{children:[`x`,e.amount]}),(0,P.jsx)(om,{type:`button`,onClick:()=>d(e.id),children:`Убрать`})]})]},e.id))]}),(0,P.jsxs)(em,{children:[(0,P.jsx)(tm,{children:`Итого ресурсов`}),l.length===0?(0,P.jsxs)(nm,{children:[(0,P.jsx)(`span`,{children:`Пока ничего не надо`}),(0,P.jsx)(lm,{children:`x0`})]}):l.map(e=>(0,P.jsxs)(nm,{children:[(0,P.jsxs)(sm,{children:[e.image&&(0,P.jsx)(cm,{src:um(e.image),alt:``}),e.label]}),(0,P.jsxs)(lm,{children:[`x`,e.amount.toLocaleString(`ru-RU`)]})]},e.key))]})]})]})}var mm=[{id:`wooden-door`,name:`Деревянная дверь`,type:`wood`,health:200,image:`raid-assets/targets/wooden-door.webp`,durability:`200 HP`,resources:{rockets:{amount:1,sulfur:1400,damage:200},c4:{amount:1,sulfur:2200,damage:200},satchel:{amount:2,sulfur:960,damage:100},molotov:{amount:2,tnk:400,damage:100}}},{id:`sheet-metal-door`,name:`Железная дверь`,type:`metal`,health:250,image:`raid-assets/targets/sheet-metal-door.webp`,durability:`250 HP`,resources:{rockets:{amount:2,sulfur:2800,damage:125},c4:{amount:1,sulfur:2200,damage:250},satchel:{amount:4,sulfur:1920,damage:62.5}}},{id:`armored-door`,name:`МВК дверь`,type:`armored`,health:1e3,image:`raid-assets/targets/armored-door.webp`,durability:`1000 HP`,resources:{rockets:{amount:5,sulfur:7e3,damage:200},c4:{amount:2,sulfur:4400,damage:500},satchel:{amount:15,sulfur:7200,damage:67}}},{id:`wooden-wall`,name:`Деревянная стена`,type:`wood`,health:250,image:`raid-assets/targets/wooden-wall.webp`,durability:`250 HP`,resources:{rockets:{amount:2,sulfur:2800,damage:125},c4:{amount:1,sulfur:2200,damage:250},satchel:{amount:3,sulfur:1440,damage:84},molotov:{amount:6,tnk:1200,damage:42}}},{id:`stone-wall`,name:`Каменная стена`,type:`stone`,health:500,image:`raid-assets/targets/stone-wall.webp`,durability:`500 HP`,resources:{rockets:{amount:4,sulfur:5600,damage:125},c4:{amount:2,sulfur:4400,damage:250},satchel:{amount:10,sulfur:4800,damage:50}}},{id:`sheet-metal-wall`,name:`Железная стена`,type:`metal`,health:1e3,image:`raid-assets/targets/sheet-metal-wall.webp`,durability:`1000 HP`,resources:{rockets:{amount:8,sulfur:11200,damage:125},c4:{amount:4,sulfur:8800,damage:250},satchel:{amount:23,sulfur:11040,damage:44}}},{id:`armored-wall`,name:`МВК стена`,type:`armored`,health:2e3,image:`raid-assets/targets/armored-wall.webp`,durability:`2000 HP`,resources:{rockets:{amount:15,sulfur:21e3,damage:134},c4:{amount:8,sulfur:17600,damage:250},satchel:{amount:46,sulfur:22080,damage:44}}},{id:`sheet-metal-hatch`,name:`Железный люк`,type:`metal`,health:250,image:`raid-assets/targets/sheet-metal-hatch.webp`,durability:`250 HP`,resources:{rockets:{amount:2,sulfur:2800,damage:125},c4:{amount:1,sulfur:2200,damage:250},satchel:{amount:4,sulfur:1920,damage:62.5}}}],hm={rockets:{label:`Ракеты`,color:`#d75a3d`,image:`raid-assets/rocket.jpg`,priceLabel:`Цена в сере`,priceField:`sulfur`,priceImage:`raid-assets/sulfur.jpg`},c4:{label:`C4`,color:`#d9a441`,image:`raid-assets/c4.jpg`,priceLabel:`Цена в сере`,priceField:`sulfur`,priceImage:`raid-assets/sulfur.jpg`},satchel:{label:`Сачели`,color:`#9f8f7a`,image:`raid-assets/satchel.jpg`,priceLabel:`Цена в сере`,priceField:`sulfur`,priceImage:`raid-assets/sulfur.jpg`},molotov:{label:`Молотовы`,color:`#f08a2f`,image:`raid-assets/molotov.png`,priceLabel:`Цена в ТНК`,priceField:`tnk`,priceImage:`raid-assets/tnk.jpg`}},gm=N(Fp.section)`
+  margin: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+`,_m=N.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+
+  @media (max-width: 620px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+`,vm=N.h3`
+  margin: 0;
+  color: #fff5e6;
+  font-size: 1.18rem;
+`,ym=N.div`
+  min-width: 156px;
+  padding: 10px 12px;
+  border: 1px solid rgba(214, 161, 90, 0.3);
+  border-radius: 8px;
+  color: #f1c47d;
+  background: rgba(214, 161, 90, 0.1);
+  font-weight: 900;
+  text-align: center;
+`,bm=N.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+
+  @media (max-width: 620px) {
+    justify-content: stretch;
+
+    ${ym} {
+      flex: 1 1 150px;
+    }
+  }
+`,xm=N.div`
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+`,Sm=N.div`
+  width: ${({$value:e})=>`${e}%`};
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #d75a3d, #f1c47d);
+  transition: width 180ms ease;
+`,Cm=N.div`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+
+  @media (max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
+`,wm=N.div`
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(17, 15, 13, 0.52);
+`,Tm=N.div`
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f2eadf;
+`,Em=N.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+`,Dm=N.h4`
+  margin: 0 0 7px;
+  color: #fff4e5;
+`,Om=N.p`
+  margin: 0;
+  color: #cdbfab;
+  font-size: 0.88rem;
+`,km=N.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+`,Am=N.input`
+  width: 74px;
+  padding: 9px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  color: #fff4e5;
+  background: rgba(0, 0, 0, 0.22);
+`,jm=N.button`
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: ${({disabled:e})=>e?`#8d8173`:`#16110d`};
+  background: ${({disabled:e})=>e?`rgba(255, 255, 255, 0.08)`:`#f1c47d`};
+  cursor: ${({disabled:e})=>e?`not-allowed`:`pointer`};
+  font-weight: 900;
+  transition:
+    transform 160ms ease,
+    background 160ms ease;
+
+  &:hover {
+    transform: ${({disabled:e})=>e?`none`:`translateY(-2px)`};
+    background: ${({disabled:e})=>e?`rgba(255, 255, 255, 0.08)`:`#ffd48d`};
+  }
+`,Mm=N.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+
+  @media (max-width: 620px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+`,Nm=N.p`
+  margin: 0;
+  color: ${({$success:e})=>e?`#a7e08c`:`#cdbfab`};
+  line-height: 1.45;
+`;function Pm(e){return`/rusthelper/${e}`}function Fm(e){return Object.fromEntries(Object.keys(e).map(e=>[e,0]))}function Im(e,t){return t[hm[e].priceField]/t.amount}function Lm(e,t){let n=Object.entries(t).filter(([,e])=>e>0).map(([t,n])=>{let r=e.resources[t];return{key:t,amount:n,priceField:hm[t].priceField,cost:n*Im(t,r)}});return{parts:n,sulfur:n.filter(e=>e.priceField===`sulfur`).reduce((e,t)=>e+t.cost,0),tnk:n.filter(e=>e.priceField===`tnk`).reduce((e,t)=>e+t.cost,0),source:`simulation`}}function Rm({target:e,onRaidComplete:t}){let[n,r]=(0,M.useState)(()=>Fm(e.resources)),[i,a]=(0,M.useState)(()=>Fm(e.resources)),[o,s]=(0,M.useState)(e.health),[c,l]=(0,M.useState)(``),u=(0,M.useMemo)(()=>Math.max(0,Math.round(o/e.health*100)),[o,e.health]),d=(0,M.useMemo)(()=>Lm(e,i),[e,i]),f=o<=0;function p(e,t){let n=Math.max(0,Number(t)||0);r(t=>({...t,[e]:n}))}function m(c){if(n[c]<=0||f)return;let u=e.resources[c],d={...i,[c]:i[c]+1},p=Math.max(0,o-u.damage);r(e=>({...e,[c]:e[c]-1})),a(d),s(p),p===0&&l(t(Lm(e,d)))}function h(){r(Fm(e.resources)),a(Fm(e.resources)),s(e.health),l(``)}return(0,P.jsxs)(gm,{initial:{opacity:0,y:12},animate:{opacity:1,y:0},transition:{duration:.22},children:[(0,P.jsxs)(_m,{children:[(0,P.jsx)(vm,{children:`Симуляция рейда`}),(0,P.jsxs)(bm,{children:[(0,P.jsxs)(ym,{children:[o.toFixed(0),` HP осталось`]}),(0,P.jsxs)(ym,{children:[d.sulfur.toLocaleString(`ru-RU`),` серы потрачено`]}),d.tnk>0&&(0,P.jsxs)(ym,{children:[d.tnk.toLocaleString(`ru-RU`),` ТНК потрачено`]})]})]}),(0,P.jsx)(xm,{children:(0,P.jsx)(Sm,{$value:u})}),(0,P.jsx)(Cm,{children:Object.entries(e.resources).map(([e,t])=>{let r=hm[e];return(0,P.jsxs)(wm,{children:[(0,P.jsx)(Tm,{children:(0,P.jsx)(Em,{src:Pm(r.image),alt:r.label})}),(0,P.jsxs)(`div`,{children:[(0,P.jsx)(Dm,{children:r.label}),(0,P.jsxs)(Om,{children:[`Урон: `,t.damage.toFixed(t.damage%1?1:0),` HP · использовано:`,` `,i[e]]}),(0,P.jsxs)(km,{children:[(0,P.jsx)(Am,{"aria-label":`Инвентарь ${r.label}`,min:`0`,type:`number`,value:n[e],onChange:t=>p(e,t.target.value)}),(0,P.jsx)(jm,{disabled:n[e]<=0||f,type:`button`,onClick:()=>m(e),children:`Использовать`})]})]})]},e)})}),(0,P.jsxs)(Mm,{children:[(0,P.jsx)(Nm,{$success:f,children:c||`Впиши, что есть в инвентаре, и прожимай взрывчатку по очереди.`}),(0,P.jsx)(jm,{type:`button`,onClick:h,children:`Сбросить`})]})]})}var zm=`rusthelper-best-raid-plans`,Bm=N(Fp.article)`
   width: min(100%, 860px);
   margin: 0 auto;
   overflow: hidden;
@@ -65,7 +389,7 @@ Error generating stack: `+e.message+`
     rgba(17, 15, 13, 0.86);
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
   text-align: left;
-`,zp=N.div`
+`,Vm=N.div`
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
@@ -79,7 +403,7 @@ Error generating stack: `+e.message+`
     grid-template-columns: 1fr;
     justify-items: start;
   }
-`,Bp=N.div`
+`,Hm=N.div`
   display: grid;
   width: 96px;
   height: 96px;
@@ -94,20 +418,20 @@ Error generating stack: `+e.message+`
     width: 86px;
     height: 86px;
   }
-`,Vp=N.img`
+`,Um=N.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
   padding: 8px;
-`,Hp=N.h2`
+`,Wm=N.h2`
   margin: 0 0 8px;
   color: #fff5e6;
   font-size: clamp(1.45rem, 4vw, 2.1rem);
-`,Up=N.p`
+`,Gm=N.p`
   margin: 0;
   color: #bdae9d;
   font-size: 0.95rem;
-`,Wp=N.span`
+`,Km=N.span`
   flex: 0 0 auto;
   padding: 9px 12px;
   border: 1px solid rgba(214, 161, 90, 0.36);
@@ -117,7 +441,7 @@ Error generating stack: `+e.message+`
   font-size: 0.82rem;
   font-weight: 900;
   text-transform: uppercase;
-`,Gp=N.div`
+`,qm=N.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
@@ -136,7 +460,7 @@ Error generating stack: `+e.message+`
       width: 100%;
     }
   }
-`,Kp=N(Fp.div)`
+`,Jm=N(Fp.div)`
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 16px;
@@ -154,22 +478,42 @@ Error generating stack: `+e.message+`
     grid-template-columns: 1fr;
     text-align: center;
   }
-`,qp=N.p`
+`,Ym=N.p`
   margin: 0 0 6px;
   color: #f1c47d;
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-`,Jp=N.h3`
+`,Xm=N.h3`
   margin: 0;
   color: #fff5e6;
   font-size: clamp(1.15rem, 3vw, 1.5rem);
-`,Yp=N.p`
+`,Zm=N.p`
   margin: 8px 0 0;
   color: #d7c6b2;
   line-height: 1.5;
-`,Xp=N(Fp.div)`
+`,Qm=N(Fp.button)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px 18px 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #16110d;
+  background: #f1c47d;
+  box-shadow: 0 14px 28px rgba(214, 161, 90, 0.24);
+  cursor: pointer;
+  font-weight: 900;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+
+  &:hover {
+    background: #ffd48d;
+    transform: translateY(-2px);
+  }
+`,$m=N(Fp.div)`
   display: grid;
   grid-template-columns: 86px minmax(0, 1fr);
   gap: 16px;
@@ -194,7 +538,7 @@ Error generating stack: `+e.message+`
     gap: 12px;
     padding: 14px;
   }
-`,Zp=N.div`
+`,eh=N.div`
   display: grid;
   width: 86px;
   height: 86px;
@@ -210,27 +554,27 @@ Error generating stack: `+e.message+`
     width: 74px;
     height: 74px;
   }
-`,Qp=N.img`
+`,th=N.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
   padding: 7px;
-`,$p=N.div`
+`,nh=N.div`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
   justify-content: center;
-`,em=N(Zp)`
+`,rh=N(eh)`
   width: 62px;
   height: 62px;
-`,tm=N.div`
+`,ih=N.div`
   min-width: 0;
-`,nm=N.h3`
+`,ah=N.h3`
   margin: 0 0 12px;
   color: #fff4e5;
   font-size: 1rem;
-`,rm=N.p`
+`,oh=N.p`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -238,20 +582,20 @@ Error generating stack: `+e.message+`
   margin: 8px 0 0;
   color: #cdbfab;
   font-size: 0.92rem;
-`,im=N.span`
+`,sh=N.span`
   display: inline-flex;
   align-items: center;
   gap: 7px;
   white-space: nowrap;
-`,am=N.img`
+`,ch=N.img`
   width: 22px;
   height: 22px;
   border-radius: 5px;
   object-fit: contain;
   background: #f2eadf;
-`,om=N.strong`
+`,lh=N.strong`
   color: #fff1dc;
-`,sm=N(Fp.div)`
+`,uh=N(Fp.div)`
   width: min(100%, 760px);
   margin: 0 auto;
   padding: 28px;
@@ -259,7 +603,7 @@ Error generating stack: `+e.message+`
   border-radius: 8px;
   color: #c7b8a8;
   background: rgba(17, 15, 13, 0.58);
-`,cm={hidden:{opacity:0,y:18,scale:.98},visible:{opacity:1,y:0,scale:1},exit:{opacity:0,y:12,scale:.98}},lm={hidden:{opacity:0,y:12},visible:{opacity:1,y:0}};function um(e){return`/rusthelper/${e}`}function dm(e,t){return t[Lp[e].priceField]}function fm(e){return Object.entries(e).filter(([e])=>Lp[e].priceField===`sulfur`).map(([e,t])=>({key:e,...t,unitSulfur:t.sulfur/t.amount,unitDamage:t.damage}))}function pm(e){return e.parts.map(e=>`${Lp[e.key].label}: ${e.amount} шт.`).join(` + `)}function mm(e){let t=fm(e.resources),n=null;function r(i,a){if(i===t.length){let r=t.map((e,t)=>({key:e.key,amount:a[t],sulfur:a[t]*e.unitSulfur,damage:a[t]*e.unitDamage})).filter(e=>e.amount>0);if(!r.length||r.reduce((e,t)=>e+t.damage,0)<e.health)return;let i=r.reduce((e,t)=>e+t.sulfur,0),o=r.reduce((e,t)=>e+t.amount,0);(!n||i<n.sulfur||i===n.sulfur&&o<n.totalItems)&&(n={parts:r,sulfur:i,totalItems:o});return}let o=t[i],s=Math.ceil(e.health/o.unitDamage)+1;for(let e=0;e<=s;e+=1)r(i+1,[...a,e])}return r(0,[]),n}function hm(e){let{resources:t}=e;if(t.molotov){let e=t.molotov;return{parts:[{key:`molotov`,amount:e.amount}],price:dm(`molotov`,e),priceLabel:Lp.molotov.priceLabel,title:`${Lp.molotov.label}: ${e.amount} шт.`,description:`Для деревянных объектов молотовы считаются самым выгодным вариантом.`}}let n=mm(e);return{parts:n.parts,price:n.sulfur,priceLabel:`Цена в сере`,title:pm(n),description:n.parts.length>1?`Подобрана самая дешевая комбинация по сере.`:`Выбрано по минимальной цене в сере.`}}function gm({target:e}){let t=e?hm(e):null;return(0,P.jsx)(Vd,{mode:`wait`,children:e?(0,P.jsxs)(Rp,{variants:cm,initial:`hidden`,animate:`visible`,exit:`exit`,transition:{duration:.28,ease:`easeOut`},children:[(0,P.jsxs)(zp,{children:[(0,P.jsx)(Bp,{children:(0,P.jsx)(Vp,{src:um(e.image),alt:``})}),(0,P.jsxs)(`div`,{children:[(0,P.jsx)(Hp,{children:e.name}),(0,P.jsxs)(Up,{children:[`Прочность: `,e.durability]})]}),(0,P.jsx)(Wp,{children:e.type})]}),(0,P.jsx)(Gp,{children:Object.entries(e.resources).map(([e,t],n)=>{let r=Lp[e],i=dm(e,t);return(0,P.jsxs)(Xp,{$color:r.color,variants:lm,initial:`hidden`,animate:`visible`,transition:{duration:.24,delay:n*.06},children:[(0,P.jsx)(Zp,{$color:r.color,children:(0,P.jsx)(Qp,{src:um(r.image),alt:r.label})}),(0,P.jsxs)(tm,{children:[(0,P.jsx)(nm,{children:r.label}),(0,P.jsxs)(rm,{children:[`Количество `,(0,P.jsx)(om,{children:t.amount})]}),(0,P.jsxs)(rm,{children:[r.priceLabel,(0,P.jsxs)(im,{children:[(0,P.jsx)(am,{src:um(r.priceImage),alt:``}),(0,P.jsx)(om,{children:i.toLocaleString(`ru-RU`)})]})]})]})]},e)})}),t&&(0,P.jsx)(Kp,{variants:lm,initial:`hidden`,animate:`visible`,transition:{duration:.24,delay:.16},children:(()=>{let e=Lp[t.parts[0].key];return(0,P.jsxs)(P.Fragment,{children:[(0,P.jsx)($p,{children:t.parts.map(e=>{let t=Lp[e.key];return(0,P.jsx)(em,{$color:t.color,children:(0,P.jsx)(Qp,{src:um(t.image),alt:t.label})},e.key)})}),(0,P.jsxs)(`div`,{children:[(0,P.jsx)(qp,{children:`Самый дешевый вариант`}),(0,P.jsx)(Jp,{children:t.title}),(0,P.jsxs)(Yp,{children:[t.priceLabel,`:`,` `,(0,P.jsxs)(im,{children:[(0,P.jsx)(am,{src:um(e.priceImage),alt:``}),(0,P.jsx)(om,{children:t.price.toLocaleString(`ru-RU`)})]}),`.`,` `,t.description]})]})]})})()})]},e.id):(0,P.jsx)(sm,{variants:cm,initial:`hidden`,animate:`visible`,exit:`exit`,transition:{duration:.22},children:`Выбери объект выше, чтобы увидеть расчёт рейда.`},`empty`)})}var _m=N.div`
+`,dh={hidden:{opacity:0,y:18,scale:.98},visible:{opacity:1,y:0,scale:1},exit:{opacity:0,y:12,scale:.98}},fh={hidden:{opacity:0,y:12},visible:{opacity:1,y:0}};function ph(e){return`/rusthelper/${e}`}function mh(e,t){return t[hm[e].priceField]}function hh(e){return Object.entries(e).filter(([e])=>hm[e].priceField===`sulfur`).map(([e,t])=>({key:e,...t,unitSulfur:t.sulfur/t.amount,unitDamage:t.damage}))}function gh(e){let t=hh(e.resources),n=null;function r(i,a){if(i===t.length){let r=t.map((e,t)=>({key:e.key,amount:a[t],sulfur:a[t]*e.unitSulfur,damage:a[t]*e.unitDamage})).filter(e=>e.amount>0);if(!r.length||r.reduce((e,t)=>e+t.damage,0)<e.health)return;let i=r.reduce((e,t)=>e+t.sulfur,0),o=r.reduce((e,t)=>e+t.amount,0);(!n||i<n.sulfur||i===n.sulfur&&o<n.totalItems)&&(n={parts:r,sulfur:i,totalItems:o});return}let o=t[i],s=Math.ceil(e.health/o.unitDamage)+1;for(let e=0;e<=s;e+=1)r(i+1,[...a,e])}return r(0,[]),n}function _h(e){let{resources:t}=e;if(t.molotov){let e=t.molotov;return{parts:[{key:`molotov`,amount:e.amount}],sulfur:0,tnk:mh(`molotov`,e),description:`Для деревянных объектов молотовы считаются самым выгодным вариантом.`,source:`default`}}let n=gh(e);return{parts:n.parts,sulfur:n.sulfur,tnk:0,description:n.parts.length>1?`Подобрана самая дешевая комбинация по сере.`:`Выбрано по минимальной цене в сере.`,source:`default`}}function vh(){try{return JSON.parse(localStorage.getItem(zm))??{}}catch{return{}}}function yh(e){localStorage.setItem(zm,JSON.stringify(e))}function bh(e){return e.parts.map(e=>`${hm[e.key].label}: ${e.amount} шт.`).join(` + `)}function xh(e){let t=[];return e.sulfur>0&&t.push(`сера: ${e.sulfur.toLocaleString(`ru-RU`)}`),e.tnk>0&&t.push(`ТНК: ${e.tnk.toLocaleString(`ru-RU`)}`),t.join(` + `)}function Sh(e,t){return t?e.sulfur===t.sulfur?e.tnk===t.tnk?e.parts.reduce((e,t)=>e+t.amount,0)<t.parts.reduce((e,t)=>e+t.amount,0):e.tnk<t.tnk:e.sulfur<t.sulfur:!0}function Ch(e,t){return{...t,title:bh(t),description:t.parts.length>1?`Сохранено из симуляции: игрок нашёл дешевый микс.`:`Сохранено из симуляции как самый дешевый вариант.`,source:`simulation`,targetId:e.id}}function wh({target:e}){let[t,n]=(0,M.useState)(!1),[r,i]=(0,M.useState)(vh),a=(0,M.useMemo)(()=>e?_h(e):null,[e]),o=(e?r[e.id]:null)??a;(0,M.useEffect)(()=>{!e||r[e.id]||!a||yh({...r,[e.id]:a})},[a,r,e]);function s(t){let n=Ch(e,t);if(!Sh(n,o))return`Бахнул, но этот вариант не дешевле сохранённого.`;let a={...r,[e.id]:n};return i(a),yh(a),`Бахнул. Новый самый нищий вариант сохранён в localStorage.`}return(0,P.jsx)(Vd,{mode:`wait`,children:e?(0,P.jsxs)(Bm,{variants:dh,initial:`hidden`,animate:`visible`,exit:`exit`,transition:{duration:.28,ease:`easeOut`},children:[(0,P.jsxs)(Vm,{children:[(0,P.jsx)(Hm,{children:(0,P.jsx)(Um,{src:ph(e.image),alt:``})}),(0,P.jsxs)(`div`,{children:[(0,P.jsx)(Wm,{children:e.name}),(0,P.jsxs)(Gm,{children:[`Прочность: `,e.durability]})]}),(0,P.jsx)(Km,{children:e.type})]}),(0,P.jsx)(qm,{children:Object.entries(e.resources).map(([e,t],n)=>{let r=hm[e],i=mh(e,t);return(0,P.jsxs)($m,{$color:r.color,variants:fh,initial:`hidden`,animate:`visible`,transition:{duration:.24,delay:n*.06},children:[(0,P.jsx)(eh,{$color:r.color,children:(0,P.jsx)(th,{src:ph(r.image),alt:r.label})}),(0,P.jsxs)(ih,{children:[(0,P.jsx)(ah,{children:r.label}),(0,P.jsxs)(oh,{children:[`Количество `,(0,P.jsx)(lh,{children:t.amount})]}),(0,P.jsxs)(oh,{children:[`Урон `,(0,P.jsxs)(lh,{children:[t.damage.toFixed(t.damage%1?1:0),` HP`]})]}),(0,P.jsxs)(oh,{children:[r.priceLabel,(0,P.jsxs)(sh,{children:[(0,P.jsx)(ch,{src:ph(r.priceImage),alt:``}),(0,P.jsx)(lh,{children:i.toLocaleString(`ru-RU`)})]})]})]})]},e)})}),(0,P.jsx)(Qm,{type:`button`,whileTap:{scale:.98},onClick:()=>n(e=>!e),children:t?`Закрыть симуляцию рейда`:`Симуляция рейда`}),t&&(0,P.jsx)(Rm,{target:e,onRaidComplete:s},e.id),o&&(0,P.jsx)(Jm,{variants:fh,initial:`hidden`,animate:`visible`,transition:{duration:.24,delay:.16},children:(()=>{let e=hm[o.parts[0].key];return(0,P.jsxs)(P.Fragment,{children:[(0,P.jsx)(nh,{children:o.parts.map(e=>{let t=hm[e.key];return(0,P.jsx)(rh,{$color:t.color,children:(0,P.jsx)(th,{src:ph(t.image),alt:t.label})},e.key)})}),(0,P.jsxs)(`div`,{children:[(0,P.jsx)(Ym,{children:`Самый дешевый вариант`}),(0,P.jsx)(Xm,{children:bh(o)}),(0,P.jsxs)(Zm,{children:[`Цена:`,` `,(0,P.jsxs)(sh,{children:[(0,P.jsx)(ch,{src:ph(e.priceImage),alt:``}),(0,P.jsx)(lh,{children:xh(o)})]}),`.`,` `,o.description]})]})]})})()})]},e.id):(0,P.jsx)(uh,{variants:dh,initial:`hidden`,animate:`visible`,exit:`exit`,transition:{duration:.22},children:`Выбери объект выше, чтобы увидеть расчёт рейда.`},`empty`)})}var Th=N.div`
   width: min(100%, 900px);
   margin: 0 auto 24px;
   padding: 18px;
@@ -268,7 +612,7 @@ Error generating stack: `+e.message+`
   background: rgba(22, 20, 18, 0.78);
   box-shadow: 0 20px 70px rgba(0, 0, 0, 0.36);
   backdrop-filter: blur(16px);
-`,vm=N.div`
+`,Eh=N.div`
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
@@ -280,7 +624,7 @@ Error generating stack: `+e.message+`
   @media (max-width: 520px) {
     grid-template-columns: 1fr;
   }
-`,ym=N(Fp.button)`
+`,Dh=N(Fp.button)`
   display: grid;
   gap: 10px;
   min-height: 132px;
@@ -312,7 +656,7 @@ Error generating stack: `+e.message+`
     outline: 3px solid rgba(214, 161, 90, 0.38);
     outline-offset: 3px;
   }
-`,bm=N.span`
+`,Oh=N.span`
   display: grid;
   width: 72px;
   height: 72px;
@@ -321,15 +665,15 @@ Error generating stack: `+e.message+`
   border-radius: 8px;
   background: #efe5d7;
   box-shadow: inset 0 0 0 1px rgba(20, 18, 15, 0.08);
-`,xm=N.img`
+`,kh=N.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
   padding: 6px;
-`,Sm=N.span`
+`,Ah=N.span`
   display: block;
   min-height: 2.4em;
-`;function Cm(e){return`/rusthelper/${e}`}function wm({targets:e,selectedId:t,onSelect:n}){return(0,P.jsx)(_m,{children:(0,P.jsx)(vm,{children:e.map(e=>(0,P.jsxs)(ym,{$active:t===e.id,type:`button`,whileHover:{y:-3},whileTap:{scale:.98},onClick:()=>n(e.id),children:[(0,P.jsx)(bm,{children:(0,P.jsx)(xm,{src:Cm(e.image),alt:``})}),(0,P.jsx)(Sm,{children:e.name})]},e.id))})})}var Tm=tr`
+`;function jh(e){return`/rusthelper/${e}`}function Mh({targets:e,selectedId:t,onSelect:n}){return(0,P.jsx)(Th,{children:(0,P.jsx)(Eh,{children:e.map(e=>(0,P.jsxs)(Dh,{$active:t===e.id,type:`button`,whileHover:{y:-3},whileTap:{scale:.98},onClick:()=>n(e.id),children:[(0,P.jsx)(Oh,{children:(0,P.jsx)(kh,{src:jh(e.image),alt:``})}),(0,P.jsx)(Ah,{children:e.name})]},e.id))})})}var Nh=tr`
   *,
   *::before,
   *::after {
@@ -369,4 +713,4 @@ Error generating stack: `+e.message+`
   #root {
     min-height: 100vh;
   }
-`;function Em(){let[e,t]=(0,M.useState)(``),n=(0,M.useMemo)(()=>Ip.find(t=>t.id===e),[e]);return(0,P.jsxs)(P.Fragment,{children:[(0,P.jsx)(Tm,{}),(0,P.jsxs)(lr,{children:[(0,P.jsx)(wm,{targets:Ip,selectedId:e,onSelect:t}),(0,P.jsx)(gm,{target:n})]})]})}(0,et.createRoot)(document.getElementById(`root`)).render((0,P.jsx)(M.StrictMode,{children:(0,P.jsx)(Em,{})}));
+`;function Ph(){let[e,t]=(0,M.useState)(``),n=(0,M.useMemo)(()=>mm.find(t=>t.id===e),[e]);return(0,P.jsxs)(P.Fragment,{children:[(0,P.jsx)(Nh,{}),(0,P.jsxs)(lr,{children:[(0,P.jsx)(Mh,{targets:mm,selectedId:e,onSelect:t}),(0,P.jsx)(wh,{target:n}),(0,P.jsx)(pm,{})]})]})}(0,et.createRoot)(document.getElementById(`root`)).render((0,P.jsx)(M.StrictMode,{children:(0,P.jsx)(Ph,{})}));
